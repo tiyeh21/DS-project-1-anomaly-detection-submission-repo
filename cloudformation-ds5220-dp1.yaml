@@ -39,12 +39,10 @@ Parameters:
 # Resources
 Resources:
 
-
   # S3 Bucket
-  
   AnomalyBucket:
     Type: AWS::S3::Bucket
-    DependsOn: SNSTopicPolicy          # bucket notification needs the policy first
+    DependsOn: SNSTopicPolicy
     Properties:
       BucketName: !Ref S3BucketName
       NotificationConfiguration:
@@ -101,25 +99,20 @@ Resources:
       GroupName: !Sub "${AWS::StackName}-sg"
       GroupDescription: "Allows SSH from your IP and FastAPI (port 8000) from anywhere"
       SecurityGroupIngress:
-        # SSH – restrict to YOUR IP
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
           CidrIp: !Ref YourIPAddress
-        # FastAPI – open to the world so SNS can reach /notify
         - IpProtocol: tcp
           FromPort: 8000
           ToPort: 8000
           CidrIp: "0.0.0.0/0"
 
-  
-  # EC2 Instance  (Ubuntu 24.04 LTS, us-east-1 AMI)
-  # If you deploy to a different region, update the AMI ID below.
-  # Ubuntu 24.04 LTS AMIs: https://cloud-images.ubuntu.com/locator/ec2/
+  # EC2 Instance
   AnomalyInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0b6c6ebed2801a5cb    # Ubuntu 24.04 LTS (us-east-1) – verified 2025-12-12
+      ImageId: ami-0b6c6ebed2801a5cb
       InstanceType: t3.micro
       KeyName: !Ref EC2KeyPairName
       IamInstanceProfile: !Ref EC2InstanceProfile
@@ -137,54 +130,37 @@ Resources:
             #!/bin/bash
             set -e
 
-            # ----------------------------------------------------------------
-            # 1. System packages
-            # ----------------------------------------------------------------
             apt-get update -y
             apt-get install -y git python3 python3-pip python3-venv
 
-            # ----------------------------------------------------------------
-            # 2. Clone the forked application repository
-            # ----------------------------------------------------------------
             git clone ${GitHubRepoURL} /opt/anomaly-detection
 
-            # ----------------------------------------------------------------
-            # 3. Virtual environment + dependencies
-            # ----------------------------------------------------------------
             python3 -m venv /opt/anomaly-detection/venv
             /opt/anomaly-detection/venv/bin/pip install --upgrade pip
             /opt/anomaly-detection/venv/bin/pip install -r /opt/anomaly-detection/requirements.txt
 
-            # ----------------------------------------------------------------
-            # 4. Environment variable – available immediately AND on reboot
-            # ----------------------------------------------------------------
             export BUCKET_NAME='${S3BucketName}'
             echo "BUCKET_NAME=${S3BucketName}" >> /etc/environment
 
-            # ----------------------------------------------------------------
-            # 5. Systemd service so FastAPI starts on boot automatically
-            # ----------------------------------------------------------------
             cat > /etc/systemd/system/anomaly-detection.service << 'SYSTEMD_UNIT'
-[Unit]
-Description=Anomaly Detection FastAPI Service
-After=network.target
+            [Unit]
+            Description=Anomaly Detection FastAPI Service
+            After=network.target
 
-[Service]
-User=ubuntu
-WorkingDirectory=/opt/anomaly-detection
-EnvironmentFile=/etc/environment
-ExecStart=/opt/anomaly-detection/venv/bin/fastapi run /opt/anomaly-detection/app.py --host 0.0.0.0 --port 8000
-Restart=always
-RestartSec=5
+            [Service]
+            User=ubuntu
+            WorkingDirectory=/opt/anomaly-detection
+            EnvironmentFile=/etc/environment
+            ExecStart=/opt/anomaly-detection/venv/bin/fastapi run /opt/anomaly-detection/app.py --host 0.0.0.0 --port 8000
+            Restart=always
+            RestartSec=5
 
-[Install]
-WantedBy=multi-user.target
-SYSTEMD_UNIT
+            [Install]
+            WantedBy=multi-user.target
+            SYSTEMD_UNIT
 
-            
             chown -R ubuntu:ubuntu /opt/anomaly-detection
 
-          
             systemctl daemon-reload
             systemctl enable anomaly-detection
             systemctl start anomaly-detection
@@ -193,9 +169,7 @@ SYSTEMD_UNIT
         - Key: Name
           Value: !Sub "${AWS::StackName}-anomaly-detection"
 
-  
-  # Elastic IP  (attached to the instance)
-  
+  # Elastic IP
   AnomalyEIP:
     Type: AWS::EC2::EIP
     Properties:
@@ -205,16 +179,13 @@ SYSTEMD_UNIT
         - Key: Name
           Value: !Sub "${AWS::StackName}-eip"
 
-  
   # SNS Topic
-  
   SNSTopic:
     Type: AWS::SNS::Topic
     Properties:
       TopicName: ds5220-dp1
 
-  
-  # SNS Topic Policy  – allows S3 to publish to the topic
+  # SNS Topic Policy
   SNSTopicPolicy:
     Type: AWS::SNS::TopicPolicy
     Properties:
@@ -233,7 +204,7 @@ SYSTEMD_UNIT
               ArnLike:
                 aws:SourceArn: !Sub "arn:aws:s3:::${S3BucketName}"
 
-  # SNS HTTP Subscription  → http://<EIP>:8000/notify
+  # SNS HTTP Subscription
   SNSSubscription:
     Type: AWS::SNS::Subscription
     Properties:
@@ -241,7 +212,7 @@ SYSTEMD_UNIT
       Protocol: http
       Endpoint: !Sub "http://${AnomalyEIP}:8000/notify"
 
-# output
+# Outputs
 Outputs:
 
   InstancePublicIP:
