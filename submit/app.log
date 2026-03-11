@@ -1,0 +1,1544 @@
+2026-03-11 20:07:12,762 [INFO] Application started. Using S3 bucket: ds5220-dp1-bucket-rna4ts
+2026-03-11 20:07:13,002 [INFO] Started server process [3975]
+2026-03-11 20:07:13,003 [INFO] Waiting for application startup.
+2026-03-11 20:07:13,003 [INFO] Application startup complete.
+2026-03-11 20:07:13,004 [INFO] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-03-11 20:07:19,063 [INFO] /notify: Received SNS message type: SubscriptionConfirmation
+2026-03-11 20:07:19,224 [INFO] /notify: SNS subscription confirmed via https://sns.us-east-1.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn:aws:sns:us-east-1:791068988330:ds5220-dp1&Token=2336412f37fb687f5d51e6e2425929f52e8e345680dec99c3098a615e08782f7327c5f4329ac357650325c759f1c4bd19512f5708b33f28d58379493feede6efc32b55892d424d669345eadb5d08926e857173f1d3845602b4f7d2db37c92fd67f94dbfc8c1506df4810b71b9fcd5198
+2026-03-11 20:20:39,492 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:20:39,492 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202037.csv
+2026-03-11 20:20:39,494 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202037.csv
+2026-03-11 20:20:39,593 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:20:39,689 [INFO] No existing baseline found in S3 — starting fresh.
+2026-03-11 20:20:39,727 [INFO] Baseline updated — channel: temperature, count: 100, mean: 22.3214, std: 1.9101
+2026-03-11 20:20:39,727 [INFO] Baseline updated — channel: humidity, count: 100, mean: 55.0089, std: 4.5381
+2026-03-11 20:20:39,728 [INFO] Baseline updated — channel: pressure, count: 100, mean: 1014.1747, std: 5.5731
+2026-03-11 20:20:39,728 [INFO] Baseline updated — channel: wind_speed, count: 100, mean: 9.9192, std: 2.7405
+2026-03-11 20:20:39,730 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:20:39,732 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.3214, std=1.9101)
+2026-03-11 20:20:39,733 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=55.0089, std=4.5381)
+2026-03-11 20:20:39,735 [INFO] Z-score — channel: pressure, flagged: 3/100 rows (mean=1014.1747, std=5.5731)
+2026-03-11 20:20:39,736 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=9.9192, std=2.7405)
+2026-03-11 20:20:39,900 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:20:39,903 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:20:39,904 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:20:39,935 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202037.csv
+2026-03-11 20:20:40,026 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:20:40,061 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:20:40,089 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202037_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 100, 'humidity': 100, 'pressure': 100, 'wind_speed': 100}
+2026-03-11 20:20:40,089 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202037.csv
+2026-03-11 20:21:39,362 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:21:39,363 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202138.csv
+2026-03-11 20:21:39,364 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202138.csv
+2026-03-11 20:21:39,449 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:21:39,539 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:21:39,539 [INFO] Baseline updated — channel: temperature, count: 200, mean: 22.073, std: 1.699
+2026-03-11 20:21:39,540 [INFO] Baseline updated — channel: humidity, count: 200, mean: 55.056, std: 5.6863
+2026-03-11 20:21:39,540 [INFO] Baseline updated — channel: pressure, count: 200, mean: 1013.9274, std: 5.2958
+2026-03-11 20:21:39,540 [INFO] Baseline updated — channel: wind_speed, count: 200, mean: 9.9037, std: 2.6922
+2026-03-11 20:21:39,541 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:21:39,542 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.073, std=1.699)
+2026-03-11 20:21:39,543 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=55.056, std=5.6863)
+2026-03-11 20:21:39,544 [INFO] Z-score — channel: pressure, flagged: 3/100 rows (mean=1013.9274, std=5.2958)
+2026-03-11 20:21:39,545 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=9.9037, std=2.6922)
+2026-03-11 20:21:39,702 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:21:39,705 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:21:39,705 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:21:39,745 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202138.csv
+2026-03-11 20:21:39,787 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:21:39,834 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:21:39,870 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202138_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 200, 'humidity': 200, 'pressure': 200, 'wind_speed': 200}
+2026-03-11 20:21:39,871 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202138.csv
+2026-03-11 20:22:39,863 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:22:39,863 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202238.csv
+2026-03-11 20:22:39,864 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202238.csv
+2026-03-11 20:22:39,937 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:22:40,027 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:22:40,028 [INFO] Baseline updated — channel: temperature, count: 300, mean: 22.0848, std: 1.6659
+2026-03-11 20:22:40,029 [INFO] Baseline updated — channel: humidity, count: 300, mean: 54.9291, std: 5.5505
+2026-03-11 20:22:40,029 [INFO] Baseline updated — channel: pressure, count: 300, mean: 1013.5505, std: 4.9325
+2026-03-11 20:22:40,029 [INFO] Baseline updated — channel: wind_speed, count: 300, mean: 9.9516, std: 3.0638
+2026-03-11 20:22:40,030 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:22:40,031 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0848, std=1.6659)
+2026-03-11 20:22:40,032 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9291, std=5.5505)
+2026-03-11 20:22:40,033 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1013.5505, std=4.9325)
+2026-03-11 20:22:40,034 [INFO] Z-score — channel: wind_speed, flagged: 3/100 rows (mean=9.9516, std=3.0638)
+2026-03-11 20:22:40,194 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:22:40,197 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:22:40,198 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:22:40,233 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202238.csv
+2026-03-11 20:22:40,279 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:22:40,331 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:22:40,365 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202238_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 300, 'humidity': 300, 'pressure': 300, 'wind_speed': 300}
+2026-03-11 20:22:40,365 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202238.csv
+2026-03-11 20:23:39,573 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:23:39,573 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202338.csv
+2026-03-11 20:23:39,574 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202338.csv
+2026-03-11 20:23:39,659 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:23:39,831 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:23:39,832 [INFO] Baseline updated — channel: temperature, count: 400, mean: 22.0325, std: 1.623
+2026-03-11 20:23:39,832 [INFO] Baseline updated — channel: humidity, count: 400, mean: 54.9873, std: 5.6654
+2026-03-11 20:23:39,833 [INFO] Baseline updated — channel: pressure, count: 400, mean: 1013.289, std: 4.9751
+2026-03-11 20:23:39,833 [INFO] Baseline updated — channel: wind_speed, count: 400, mean: 10.0651, std: 3.1713
+2026-03-11 20:23:39,834 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:23:39,835 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0325, std=1.623)
+2026-03-11 20:23:39,836 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9873, std=5.6654)
+2026-03-11 20:23:39,837 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1013.289, std=4.9751)
+2026-03-11 20:23:39,838 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0651, std=3.1713)
+2026-03-11 20:23:39,994 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:23:39,997 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:23:39,997 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:23:40,032 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202338.csv
+2026-03-11 20:23:40,112 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:23:40,147 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:23:40,195 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202338_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 400, 'humidity': 400, 'pressure': 400, 'wind_speed': 400}
+2026-03-11 20:23:40,195 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202338.csv
+2026-03-11 20:24:40,121 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:24:40,121 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202438.csv
+2026-03-11 20:24:40,123 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202438.csv
+2026-03-11 20:24:40,207 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:24:40,287 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:24:40,288 [INFO] Baseline updated — channel: temperature, count: 500, mean: 21.996, std: 1.5871
+2026-03-11 20:24:40,289 [INFO] Baseline updated — channel: humidity, count: 500, mean: 54.9876, std: 5.5939
+2026-03-11 20:24:40,289 [INFO] Baseline updated — channel: pressure, count: 500, mean: 1013.1536, std: 4.8665
+2026-03-11 20:24:40,289 [INFO] Baseline updated — channel: wind_speed, count: 500, mean: 10.0257, std: 3.2557
+2026-03-11 20:24:40,290 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:24:40,291 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=21.996, std=1.5871)
+2026-03-11 20:24:40,292 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9876, std=5.5939)
+2026-03-11 20:24:40,293 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1013.1536, std=4.8665)
+2026-03-11 20:24:40,294 [INFO] Z-score — channel: wind_speed, flagged: 3/100 rows (mean=10.0257, std=3.2557)
+2026-03-11 20:24:40,449 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:24:40,452 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:24:40,452 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:24:40,485 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202438.csv
+2026-03-11 20:24:40,566 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:24:40,605 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:24:40,638 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202438_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 500, 'humidity': 500, 'pressure': 500, 'wind_speed': 500}
+2026-03-11 20:24:40,638 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202438.csv
+2026-03-11 20:25:40,652 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:25:40,652 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202538.csv
+2026-03-11 20:25:40,653 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202538.csv
+2026-03-11 20:25:40,734 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:25:40,804 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:25:40,804 [INFO] Baseline updated — channel: temperature, count: 600, mean: 22.0363, std: 1.6361
+2026-03-11 20:25:40,805 [INFO] Baseline updated — channel: humidity, count: 600, mean: 54.877, std: 6.0793
+2026-03-11 20:25:40,805 [INFO] Baseline updated — channel: pressure, count: 600, mean: 1013.1417, std: 4.6366
+2026-03-11 20:25:40,806 [INFO] Baseline updated — channel: wind_speed, count: 600, mean: 10.0978, std: 3.3822
+2026-03-11 20:25:40,806 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:25:40,807 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0363, std=1.6361)
+2026-03-11 20:25:40,808 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.877, std=6.0793)
+2026-03-11 20:25:40,809 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1013.1417, std=4.6366)
+2026-03-11 20:25:40,810 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0978, std=3.3822)
+2026-03-11 20:25:40,965 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:25:40,968 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:25:40,968 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:25:41,010 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202538.csv
+2026-03-11 20:25:41,043 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:25:41,135 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:25:41,168 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202538_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 600, 'humidity': 600, 'pressure': 600, 'wind_speed': 600}
+2026-03-11 20:25:41,168 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202538.csv
+2026-03-11 20:26:40,227 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:26:40,227 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202638.csv
+2026-03-11 20:26:40,229 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202638.csv
+2026-03-11 20:26:40,341 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:26:40,413 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:26:40,414 [INFO] Baseline updated — channel: temperature, count: 700, mean: 22.062, std: 1.6396
+2026-03-11 20:26:40,414 [INFO] Baseline updated — channel: humidity, count: 700, mean: 54.977, std: 5.9095
+2026-03-11 20:26:40,414 [INFO] Baseline updated — channel: pressure, count: 700, mean: 1013.093, std: 4.5559
+2026-03-11 20:26:40,415 [INFO] Baseline updated — channel: wind_speed, count: 700, mean: 10.0864, std: 3.4011
+2026-03-11 20:26:40,415 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:26:40,416 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.062, std=1.6396)
+2026-03-11 20:26:40,417 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.977, std=5.9095)
+2026-03-11 20:26:40,418 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1013.093, std=4.5559)
+2026-03-11 20:26:40,419 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0864, std=3.4011)
+2026-03-11 20:26:40,578 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:26:40,581 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:26:40,581 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:26:40,672 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202638.csv
+2026-03-11 20:26:40,707 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:26:40,734 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:26:40,780 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202638_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 700, 'humidity': 700, 'pressure': 700, 'wind_speed': 700}
+2026-03-11 20:26:40,781 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202638.csv
+2026-03-11 20:27:41,595 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:27:41,595 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202739.csv
+2026-03-11 20:27:41,596 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202739.csv
+2026-03-11 20:27:41,688 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:27:41,767 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:27:41,768 [INFO] Baseline updated — channel: temperature, count: 800, mean: 22.0325, std: 1.6579
+2026-03-11 20:27:41,769 [INFO] Baseline updated — channel: humidity, count: 800, mean: 55.0353, std: 6.2048
+2026-03-11 20:27:41,769 [INFO] Baseline updated — channel: pressure, count: 800, mean: 1012.9894, std: 4.4686
+2026-03-11 20:27:41,769 [INFO] Baseline updated — channel: wind_speed, count: 800, mean: 10.0765, std: 3.3006
+2026-03-11 20:27:41,770 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:27:41,771 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0325, std=1.6579)
+2026-03-11 20:27:41,772 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=55.0353, std=6.2048)
+2026-03-11 20:27:41,773 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.9894, std=4.4686)
+2026-03-11 20:27:41,774 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0765, std=3.3006)
+2026-03-11 20:27:41,928 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:27:41,931 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:27:41,931 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:27:41,988 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202739.csv
+2026-03-11 20:27:42,022 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:27:42,067 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:27:42,102 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202739_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 800, 'humidity': 800, 'pressure': 800, 'wind_speed': 800}
+2026-03-11 20:27:42,102 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202739.csv
+2026-03-11 20:28:41,263 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:28:41,263 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202840.csv
+2026-03-11 20:28:41,265 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202840.csv
+2026-03-11 20:28:41,336 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:28:41,440 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:28:41,441 [INFO] Baseline updated — channel: temperature, count: 900, mean: 22.0362, std: 1.6631
+2026-03-11 20:28:41,441 [INFO] Baseline updated — channel: humidity, count: 900, mean: 55.1066, std: 6.0985
+2026-03-11 20:28:41,442 [INFO] Baseline updated — channel: pressure, count: 900, mean: 1012.9932, std: 4.3889
+2026-03-11 20:28:41,442 [INFO] Baseline updated — channel: wind_speed, count: 900, mean: 10.0657, std: 3.3497
+2026-03-11 20:28:41,443 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:28:41,444 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0362, std=1.6631)
+2026-03-11 20:28:41,445 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=55.1066, std=6.0985)
+2026-03-11 20:28:41,446 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.9932, std=4.3889)
+2026-03-11 20:28:41,447 [INFO] Z-score — channel: wind_speed, flagged: 3/100 rows (mean=10.0657, std=3.3497)
+2026-03-11 20:28:41,609 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:28:41,613 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:28:41,613 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:28:41,653 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202840.csv
+2026-03-11 20:28:41,684 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:28:41,719 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:28:41,754 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202840_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 900, 'humidity': 900, 'pressure': 900, 'wind_speed': 900}
+2026-03-11 20:28:41,755 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202840.csv
+2026-03-11 20:29:41,724 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:29:41,724 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T202940.csv
+2026-03-11 20:29:41,726 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202940.csv
+2026-03-11 20:29:41,809 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:29:41,883 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:29:41,884 [INFO] Baseline updated — channel: temperature, count: 1000, mean: 22.0344, std: 1.6694
+2026-03-11 20:29:41,884 [INFO] Baseline updated — channel: humidity, count: 1000, mean: 55.0579, std: 6.0487
+2026-03-11 20:29:41,885 [INFO] Baseline updated — channel: pressure, count: 1000, mean: 1013.0111, std: 4.2887
+2026-03-11 20:29:41,885 [INFO] Baseline updated — channel: wind_speed, count: 1000, mean: 9.9809, std: 3.4145
+2026-03-11 20:29:41,885 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:29:41,887 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0344, std=1.6694)
+2026-03-11 20:29:41,888 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=55.0579, std=6.0487)
+2026-03-11 20:29:41,889 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1013.0111, std=4.2887)
+2026-03-11 20:29:41,890 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=9.9809, std=3.4145)
+2026-03-11 20:29:42,049 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:29:42,052 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:29:42,053 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:29:42,107 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202940.csv
+2026-03-11 20:29:42,135 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:29:42,167 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:29:42,218 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T202940_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 1000, 'humidity': 1000, 'pressure': 1000, 'wind_speed': 1000}
+2026-03-11 20:29:42,218 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T202940.csv
+2026-03-11 20:30:42,226 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:30:42,227 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203040.csv
+2026-03-11 20:30:42,228 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203040.csv
+2026-03-11 20:30:42,322 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:30:42,413 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:30:42,414 [INFO] Baseline updated — channel: temperature, count: 1100, mean: 22.0631, std: 1.6978
+2026-03-11 20:30:42,414 [INFO] Baseline updated — channel: humidity, count: 1100, mean: 55.048, std: 6.0731
+2026-03-11 20:30:42,415 [INFO] Baseline updated — channel: pressure, count: 1100, mean: 1013.0127, std: 4.2273
+2026-03-11 20:30:42,415 [INFO] Baseline updated — channel: wind_speed, count: 1100, mean: 9.9403, std: 3.3333
+2026-03-11 20:30:42,416 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:30:42,417 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0631, std=1.6978)
+2026-03-11 20:30:42,418 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=55.048, std=6.0731)
+2026-03-11 20:30:42,419 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1013.0127, std=4.2273)
+2026-03-11 20:30:42,420 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=9.9403, std=3.3333)
+2026-03-11 20:30:42,580 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:30:42,583 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:30:42,583 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:30:42,624 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203040.csv
+2026-03-11 20:30:42,653 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:30:42,680 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:30:42,720 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203040_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 1100, 'humidity': 1100, 'pressure': 1100, 'wind_speed': 1100}
+2026-03-11 20:30:42,720 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203040.csv
+2026-03-11 20:31:42,027 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:31:42,027 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203140.csv
+2026-03-11 20:31:42,028 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203140.csv
+2026-03-11 20:31:42,104 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:31:42,181 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:31:42,181 [INFO] Baseline updated — channel: temperature, count: 1200, mean: 22.0561, std: 1.6981
+2026-03-11 20:31:42,182 [INFO] Baseline updated — channel: humidity, count: 1200, mean: 55.0917, std: 6.0991
+2026-03-11 20:31:42,183 [INFO] Baseline updated — channel: pressure, count: 1200, mean: 1012.9698, std: 4.1626
+2026-03-11 20:31:42,183 [INFO] Baseline updated — channel: wind_speed, count: 1200, mean: 9.9545, std: 3.3095
+2026-03-11 20:31:42,183 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:31:42,184 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0561, std=1.6981)
+2026-03-11 20:31:42,186 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=55.0917, std=6.0991)
+2026-03-11 20:31:42,187 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.9698, std=4.1626)
+2026-03-11 20:31:42,188 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=9.9545, std=3.3095)
+2026-03-11 20:31:42,342 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:31:42,345 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:31:42,345 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:31:42,378 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203140.csv
+2026-03-11 20:31:42,409 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:31:42,442 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:31:42,469 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203140_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 1200, 'humidity': 1200, 'pressure': 1200, 'wind_speed': 1200}
+2026-03-11 20:31:42,470 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203140.csv
+2026-03-11 20:32:42,379 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:32:42,379 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203240.csv
+2026-03-11 20:32:42,380 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203240.csv
+2026-03-11 20:32:42,463 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:32:42,582 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:32:42,583 [INFO] Baseline updated — channel: temperature, count: 1300, mean: 22.0598, std: 1.6956
+2026-03-11 20:32:42,583 [INFO] Baseline updated — channel: humidity, count: 1300, mean: 55.1337, std: 6.0538
+2026-03-11 20:32:42,584 [INFO] Baseline updated — channel: pressure, count: 1300, mean: 1012.9437, std: 4.1569
+2026-03-11 20:32:42,584 [INFO] Baseline updated — channel: wind_speed, count: 1300, mean: 9.9663, std: 3.3365
+2026-03-11 20:32:42,585 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:32:42,586 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0598, std=1.6956)
+2026-03-11 20:32:42,587 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=55.1337, std=6.0538)
+2026-03-11 20:32:42,588 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.9437, std=4.1569)
+2026-03-11 20:32:42,589 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=9.9663, std=3.3365)
+2026-03-11 20:32:42,742 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:32:42,745 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:32:42,746 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:32:42,823 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203240.csv
+2026-03-11 20:32:42,853 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:32:42,888 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:32:42,928 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203240_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 1300, 'humidity': 1300, 'pressure': 1300, 'wind_speed': 1300}
+2026-03-11 20:32:42,928 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203240.csv
+2026-03-11 20:33:42,864 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:33:42,864 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203341.csv
+2026-03-11 20:33:42,865 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203341.csv
+2026-03-11 20:33:42,936 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:33:43,041 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:33:43,042 [INFO] Baseline updated — channel: temperature, count: 1400, mean: 22.068, std: 1.7169
+2026-03-11 20:33:43,043 [INFO] Baseline updated — channel: humidity, count: 1400, mean: 55.1303, std: 6.2898
+2026-03-11 20:33:43,043 [INFO] Baseline updated — channel: pressure, count: 1400, mean: 1012.9634, std: 4.0747
+2026-03-11 20:33:43,043 [INFO] Baseline updated — channel: wind_speed, count: 1400, mean: 9.9764, std: 3.34
+2026-03-11 20:33:43,044 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:33:43,045 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.068, std=1.7169)
+2026-03-11 20:33:43,046 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=55.1303, std=6.2898)
+2026-03-11 20:33:43,047 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.9634, std=4.0747)
+2026-03-11 20:33:43,048 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=9.9764, std=3.34)
+2026-03-11 20:33:43,202 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:33:43,205 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:33:43,205 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:33:43,231 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203341.csv
+2026-03-11 20:33:43,260 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:33:43,289 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:33:43,316 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203341_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 1400, 'humidity': 1400, 'pressure': 1400, 'wind_speed': 1400}
+2026-03-11 20:33:43,316 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203341.csv
+2026-03-11 20:34:42,772 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:34:42,772 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203441.csv
+2026-03-11 20:34:42,773 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203441.csv
+2026-03-11 20:34:42,859 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:34:42,948 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:34:42,949 [INFO] Baseline updated — channel: temperature, count: 1500, mean: 22.0819, std: 1.7847
+2026-03-11 20:34:42,949 [INFO] Baseline updated — channel: humidity, count: 1500, mean: 55.1353, std: 6.2348
+2026-03-11 20:34:42,950 [INFO] Baseline updated — channel: pressure, count: 1500, mean: 1012.9122, std: 4.073
+2026-03-11 20:34:42,950 [INFO] Baseline updated — channel: wind_speed, count: 1500, mean: 9.9646, std: 3.2803
+2026-03-11 20:34:42,951 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:34:42,952 [INFO] Z-score — channel: temperature, flagged: 3/100 rows (mean=22.0819, std=1.7847)
+2026-03-11 20:34:42,953 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=55.1353, std=6.2348)
+2026-03-11 20:34:42,954 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.9122, std=4.073)
+2026-03-11 20:34:42,955 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=9.9646, std=3.2803)
+2026-03-11 20:34:43,115 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:34:43,118 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:34:43,119 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:34:43,158 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203441.csv
+2026-03-11 20:34:43,184 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:34:43,226 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:34:43,276 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203441_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 1500, 'humidity': 1500, 'pressure': 1500, 'wind_speed': 1500}
+2026-03-11 20:34:43,276 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203441.csv
+2026-03-11 20:35:43,194 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:35:43,194 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203541.csv
+2026-03-11 20:35:43,195 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203541.csv
+2026-03-11 20:35:43,294 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:35:43,408 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:35:43,409 [INFO] Baseline updated — channel: temperature, count: 1600, mean: 22.073, std: 1.7731
+2026-03-11 20:35:43,410 [INFO] Baseline updated — channel: humidity, count: 1600, mean: 55.0931, std: 6.3408
+2026-03-11 20:35:43,410 [INFO] Baseline updated — channel: pressure, count: 1600, mean: 1012.9198, std: 4.0104
+2026-03-11 20:35:43,410 [INFO] Baseline updated — channel: wind_speed, count: 1600, mean: 10.0499, std: 3.4121
+2026-03-11 20:35:43,411 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:35:43,412 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.073, std=1.7731)
+2026-03-11 20:35:43,413 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=55.0931, std=6.3408)
+2026-03-11 20:35:43,414 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.9198, std=4.0104)
+2026-03-11 20:35:43,415 [INFO] Z-score — channel: wind_speed, flagged: 3/100 rows (mean=10.0499, std=3.4121)
+2026-03-11 20:35:43,569 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:35:43,572 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:35:43,573 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:35:43,608 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203541.csv
+2026-03-11 20:35:43,642 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:35:43,684 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:35:43,714 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203541_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 1600, 'humidity': 1600, 'pressure': 1600, 'wind_speed': 1600}
+2026-03-11 20:35:43,714 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203541.csv
+2026-03-11 20:36:43,602 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:36:43,603 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203641.csv
+2026-03-11 20:36:43,604 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203641.csv
+2026-03-11 20:36:43,685 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:36:43,762 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:36:43,763 [INFO] Baseline updated — channel: temperature, count: 1700, mean: 22.0866, std: 1.8324
+2026-03-11 20:36:43,763 [INFO] Baseline updated — channel: humidity, count: 1700, mean: 55.0542, std: 6.3092
+2026-03-11 20:36:43,763 [INFO] Baseline updated — channel: pressure, count: 1700, mean: 1012.9052, std: 3.9822
+2026-03-11 20:36:43,764 [INFO] Baseline updated — channel: wind_speed, count: 1700, mean: 10.05, std: 3.3574
+2026-03-11 20:36:43,764 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:36:43,765 [INFO] Z-score — channel: temperature, flagged: 3/100 rows (mean=22.0866, std=1.8324)
+2026-03-11 20:36:43,766 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=55.0542, std=6.3092)
+2026-03-11 20:36:43,767 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.9052, std=3.9822)
+2026-03-11 20:36:43,768 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.05, std=3.3574)
+2026-03-11 20:36:43,921 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:36:43,924 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:36:43,925 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:36:43,966 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203641.csv
+2026-03-11 20:36:44,004 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:36:44,041 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:36:44,077 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203641_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 1700, 'humidity': 1700, 'pressure': 1700, 'wind_speed': 1700}
+2026-03-11 20:36:44,077 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203641.csv
+2026-03-11 20:37:43,355 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:37:43,355 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203742.csv
+2026-03-11 20:37:43,356 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203742.csv
+2026-03-11 20:37:43,435 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:37:43,507 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:37:43,507 [INFO] Baseline updated — channel: temperature, count: 1800, mean: 22.0723, std: 1.8308
+2026-03-11 20:37:43,508 [INFO] Baseline updated — channel: humidity, count: 1800, mean: 55.0748, std: 6.2722
+2026-03-11 20:37:43,508 [INFO] Baseline updated — channel: pressure, count: 1800, mean: 1012.932, std: 3.9732
+2026-03-11 20:37:43,508 [INFO] Baseline updated — channel: wind_speed, count: 1800, mean: 10.049, std: 3.3261
+2026-03-11 20:37:43,509 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:37:43,510 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0723, std=1.8308)
+2026-03-11 20:37:43,511 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=55.0748, std=6.2722)
+2026-03-11 20:37:43,512 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.932, std=3.9732)
+2026-03-11 20:37:43,513 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.049, std=3.3261)
+2026-03-11 20:37:43,668 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:37:43,671 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:37:43,671 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:37:43,700 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203742.csv
+2026-03-11 20:37:43,734 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:37:43,771 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:37:43,802 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203742_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 1800, 'humidity': 1800, 'pressure': 1800, 'wind_speed': 1800}
+2026-03-11 20:37:43,802 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203742.csv
+2026-03-11 20:38:43,893 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:38:43,894 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203842.csv
+2026-03-11 20:38:43,895 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203842.csv
+2026-03-11 20:38:43,969 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:38:44,133 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:38:44,134 [INFO] Baseline updated — channel: temperature, count: 1900, mean: 22.0816, std: 1.8124
+2026-03-11 20:38:44,134 [INFO] Baseline updated — channel: humidity, count: 1900, mean: 55.0269, std: 6.2396
+2026-03-11 20:38:44,134 [INFO] Baseline updated — channel: pressure, count: 1900, mean: 1012.9323, std: 4.0162
+2026-03-11 20:38:44,135 [INFO] Baseline updated — channel: wind_speed, count: 1900, mean: 10.0539, std: 3.3197
+2026-03-11 20:38:44,135 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:38:44,136 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0816, std=1.8124)
+2026-03-11 20:38:44,137 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=55.0269, std=6.2396)
+2026-03-11 20:38:44,139 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.9323, std=4.0162)
+2026-03-11 20:38:44,140 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0539, std=3.3197)
+2026-03-11 20:38:44,298 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:38:44,302 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:38:44,302 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:38:44,331 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203842.csv
+2026-03-11 20:38:44,357 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:38:44,389 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:38:44,420 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203842_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 1900, 'humidity': 1900, 'pressure': 1900, 'wind_speed': 1900}
+2026-03-11 20:38:44,420 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203842.csv
+2026-03-11 20:39:51,149 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:39:51,149 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T203942.csv
+2026-03-11 20:39:51,151 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203942.csv
+2026-03-11 20:39:51,231 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:39:51,307 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:39:51,307 [INFO] Baseline updated — channel: temperature, count: 2000, mean: 22.0827, std: 1.8268
+2026-03-11 20:39:51,308 [INFO] Baseline updated — channel: humidity, count: 2000, mean: 55.0341, std: 6.4104
+2026-03-11 20:39:51,308 [INFO] Baseline updated — channel: pressure, count: 2000, mean: 1012.9162, std: 3.9595
+2026-03-11 20:39:51,309 [INFO] Baseline updated — channel: wind_speed, count: 2000, mean: 10.055, std: 3.293
+2026-03-11 20:39:51,309 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:39:51,310 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0827, std=1.8268)
+2026-03-11 20:39:51,311 [INFO] Z-score — channel: humidity, flagged: 3/100 rows (mean=55.0341, std=6.4104)
+2026-03-11 20:39:51,312 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.9162, std=3.9595)
+2026-03-11 20:39:51,313 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.055, std=3.293)
+2026-03-11 20:39:51,470 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:39:51,473 [INFO] Consensus flag: 7/100 rows marked anomaly=True
+2026-03-11 20:39:51,473 [INFO] process_file: Detection complete — 7/100 anomalies flagged
+2026-03-11 20:39:51,516 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203942.csv
+2026-03-11 20:39:51,549 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:39:51,643 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:39:51,700 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T203942_summary.json — anomaly_rate=0.07, baseline_counts={'temperature': 2000, 'humidity': 2000, 'pressure': 2000, 'wind_speed': 2000}
+2026-03-11 20:39:51,700 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T203942.csv
+2026-03-11 20:40:51,644 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:40:51,644 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204049.csv
+2026-03-11 20:40:51,645 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204049.csv
+2026-03-11 20:40:51,716 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:40:51,820 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:40:51,821 [INFO] Baseline updated — channel: temperature, count: 2100, mean: 22.0779, std: 1.8118
+2026-03-11 20:40:51,821 [INFO] Baseline updated — channel: humidity, count: 2100, mean: 55.0232, std: 6.4299
+2026-03-11 20:40:51,821 [INFO] Baseline updated — channel: pressure, count: 2100, mean: 1012.8868, std: 4.0472
+2026-03-11 20:40:51,822 [INFO] Baseline updated — channel: wind_speed, count: 2100, mean: 10.0574, std: 3.2515
+2026-03-11 20:40:51,822 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:40:51,823 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0779, std=1.8118)
+2026-03-11 20:40:51,824 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=55.0232, std=6.4299)
+2026-03-11 20:40:51,825 [INFO] Z-score — channel: pressure, flagged: 3/100 rows (mean=1012.8868, std=4.0472)
+2026-03-11 20:40:51,826 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0574, std=3.2515)
+2026-03-11 20:40:51,983 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:40:51,986 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:40:51,986 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:40:52,059 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204049.csv
+2026-03-11 20:40:52,096 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:40:52,133 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:40:52,173 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204049_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 2100, 'humidity': 2100, 'pressure': 2100, 'wind_speed': 2100}
+2026-03-11 20:40:52,173 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204049.csv
+2026-03-11 20:41:52,117 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:41:52,117 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204150.csv
+2026-03-11 20:41:52,119 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204150.csv
+2026-03-11 20:41:52,211 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:41:52,276 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:41:52,276 [INFO] Baseline updated — channel: temperature, count: 2200, mean: 22.077, std: 1.8084
+2026-03-11 20:41:52,277 [INFO] Baseline updated — channel: humidity, count: 2200, mean: 54.9577, std: 6.4629
+2026-03-11 20:41:52,277 [INFO] Baseline updated — channel: pressure, count: 2200, mean: 1012.899, std: 4.004
+2026-03-11 20:41:52,278 [INFO] Baseline updated — channel: wind_speed, count: 2200, mean: 10.0381, std: 3.2624
+2026-03-11 20:41:52,278 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:41:52,279 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.077, std=1.8084)
+2026-03-11 20:41:52,280 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9577, std=6.4629)
+2026-03-11 20:41:52,281 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.899, std=4.004)
+2026-03-11 20:41:52,283 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0381, std=3.2624)
+2026-03-11 20:41:52,442 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:41:52,445 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:41:52,445 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:41:52,493 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204150.csv
+2026-03-11 20:41:52,516 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:41:52,555 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:41:52,586 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204150_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 2200, 'humidity': 2200, 'pressure': 2200, 'wind_speed': 2200}
+2026-03-11 20:41:52,586 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204150.csv
+2026-03-11 20:42:52,788 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:42:52,788 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204250.csv
+2026-03-11 20:42:52,790 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204250.csv
+2026-03-11 20:42:52,860 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:42:53,013 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:42:53,014 [INFO] Baseline updated — channel: temperature, count: 2300, mean: 22.0907, std: 1.8034
+2026-03-11 20:42:53,014 [INFO] Baseline updated — channel: humidity, count: 2300, mean: 54.9577, std: 6.4354
+2026-03-11 20:42:53,015 [INFO] Baseline updated — channel: pressure, count: 2300, mean: 1012.9087, std: 4.0132
+2026-03-11 20:42:53,015 [INFO] Baseline updated — channel: wind_speed, count: 2300, mean: 10.051, std: 3.2569
+2026-03-11 20:42:53,015 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:42:53,016 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0907, std=1.8034)
+2026-03-11 20:42:53,017 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9577, std=6.4354)
+2026-03-11 20:42:53,019 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.9087, std=4.0132)
+2026-03-11 20:42:53,020 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.051, std=3.2569)
+2026-03-11 20:42:53,175 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:42:53,178 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:42:53,179 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:42:53,212 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204250.csv
+2026-03-11 20:42:53,251 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:42:53,286 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:42:53,316 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204250_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 2300, 'humidity': 2300, 'pressure': 2300, 'wind_speed': 2300}
+2026-03-11 20:42:53,316 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204250.csv
+2026-03-11 20:43:53,198 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:43:53,198 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204351.csv
+2026-03-11 20:43:53,199 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204351.csv
+2026-03-11 20:43:53,286 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:43:53,357 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:43:53,357 [INFO] Baseline updated — channel: temperature, count: 2400, mean: 22.0803, std: 1.8025
+2026-03-11 20:43:53,358 [INFO] Baseline updated — channel: humidity, count: 2400, mean: 54.9782, std: 6.3985
+2026-03-11 20:43:53,358 [INFO] Baseline updated — channel: pressure, count: 2400, mean: 1012.9062, std: 3.9911
+2026-03-11 20:43:53,359 [INFO] Baseline updated — channel: wind_speed, count: 2400, mean: 10.0622, std: 3.2544
+2026-03-11 20:43:53,359 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:43:53,360 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0803, std=1.8025)
+2026-03-11 20:43:53,361 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9782, std=6.3985)
+2026-03-11 20:43:53,362 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.9062, std=3.9911)
+2026-03-11 20:43:53,363 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0622, std=3.2544)
+2026-03-11 20:43:53,519 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:43:53,522 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:43:53,522 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:43:53,560 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204351.csv
+2026-03-11 20:43:53,597 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:43:53,629 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:43:53,672 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204351_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 2400, 'humidity': 2400, 'pressure': 2400, 'wind_speed': 2400}
+2026-03-11 20:43:53,672 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204351.csv
+2026-03-11 20:44:52,959 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:44:52,959 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204451.csv
+2026-03-11 20:44:52,960 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204451.csv
+2026-03-11 20:44:53,055 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:44:53,127 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:44:53,128 [INFO] Baseline updated — channel: temperature, count: 2500, mean: 22.067, std: 1.8009
+2026-03-11 20:44:53,128 [INFO] Baseline updated — channel: humidity, count: 2500, mean: 54.9714, std: 6.3731
+2026-03-11 20:44:53,129 [INFO] Baseline updated — channel: pressure, count: 2500, mean: 1012.9059, std: 3.9761
+2026-03-11 20:44:53,129 [INFO] Baseline updated — channel: wind_speed, count: 2500, mean: 10.0432, std: 3.2567
+2026-03-11 20:44:53,130 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:44:53,131 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.067, std=1.8009)
+2026-03-11 20:44:53,132 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9714, std=6.3731)
+2026-03-11 20:44:53,133 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.9059, std=3.9761)
+2026-03-11 20:44:53,134 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0432, std=3.2567)
+2026-03-11 20:44:53,289 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:44:53,292 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:44:53,292 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:44:53,331 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204451.csv
+2026-03-11 20:44:53,361 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:44:53,396 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:44:53,430 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204451_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 2500, 'humidity': 2500, 'pressure': 2500, 'wind_speed': 2500}
+2026-03-11 20:44:53,430 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204451.csv
+2026-03-11 20:45:53,457 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:45:53,457 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204551.csv
+2026-03-11 20:45:53,459 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204551.csv
+2026-03-11 20:45:53,537 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:45:53,615 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:45:53,616 [INFO] Baseline updated — channel: temperature, count: 2600, mean: 22.0625, std: 1.7935
+2026-03-11 20:45:53,616 [INFO] Baseline updated — channel: humidity, count: 2600, mean: 54.9562, std: 6.3973
+2026-03-11 20:45:53,617 [INFO] Baseline updated — channel: pressure, count: 2600, mean: 1012.902, std: 3.9497
+2026-03-11 20:45:53,617 [INFO] Baseline updated — channel: wind_speed, count: 2600, mean: 10.0331, std: 3.2824
+2026-03-11 20:45:53,617 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:45:53,618 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0625, std=1.7935)
+2026-03-11 20:45:53,620 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9562, std=6.3973)
+2026-03-11 20:45:53,621 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.902, std=3.9497)
+2026-03-11 20:45:53,622 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0331, std=3.2824)
+2026-03-11 20:45:53,776 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:45:53,779 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:45:53,779 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:45:53,812 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204551.csv
+2026-03-11 20:45:53,846 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:45:53,883 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:45:53,911 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204551_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 2600, 'humidity': 2600, 'pressure': 2600, 'wind_speed': 2600}
+2026-03-11 20:45:53,911 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204551.csv
+2026-03-11 20:46:53,913 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:46:53,913 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204652.csv
+2026-03-11 20:46:53,914 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204652.csv
+2026-03-11 20:46:53,996 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:46:54,095 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:46:54,096 [INFO] Baseline updated — channel: temperature, count: 2700, mean: 22.0593, std: 1.806
+2026-03-11 20:46:54,097 [INFO] Baseline updated — channel: humidity, count: 2700, mean: 54.9991, std: 6.391
+2026-03-11 20:46:54,097 [INFO] Baseline updated — channel: pressure, count: 2700, mean: 1012.9115, std: 3.9258
+2026-03-11 20:46:54,097 [INFO] Baseline updated — channel: wind_speed, count: 2700, mean: 10.0269, std: 3.2782
+2026-03-11 20:46:54,098 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:46:54,099 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0593, std=1.806)
+2026-03-11 20:46:54,100 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9991, std=6.391)
+2026-03-11 20:46:54,101 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.9115, std=3.9258)
+2026-03-11 20:46:54,102 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0269, std=3.2782)
+2026-03-11 20:46:54,256 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:46:54,260 [INFO] Consensus flag: 7/100 rows marked anomaly=True
+2026-03-11 20:46:54,260 [INFO] process_file: Detection complete — 7/100 anomalies flagged
+2026-03-11 20:46:54,328 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204652.csv
+2026-03-11 20:46:54,358 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:46:54,396 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:46:54,436 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204652_summary.json — anomaly_rate=0.07, baseline_counts={'temperature': 2700, 'humidity': 2700, 'pressure': 2700, 'wind_speed': 2700}
+2026-03-11 20:46:54,437 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204652.csv
+2026-03-11 20:47:53,681 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:47:53,681 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204752.csv
+2026-03-11 20:47:53,682 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204752.csv
+2026-03-11 20:47:53,766 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:47:53,843 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:47:53,843 [INFO] Baseline updated — channel: temperature, count: 2800, mean: 22.0586, std: 1.8044
+2026-03-11 20:47:53,844 [INFO] Baseline updated — channel: humidity, count: 2800, mean: 54.9565, std: 6.3744
+2026-03-11 20:47:53,844 [INFO] Baseline updated — channel: pressure, count: 2800, mean: 1012.8947, std: 3.9016
+2026-03-11 20:47:53,845 [INFO] Baseline updated — channel: wind_speed, count: 2800, mean: 10.0403, std: 3.27
+2026-03-11 20:47:53,845 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:47:53,846 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0586, std=1.8044)
+2026-03-11 20:47:53,847 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9565, std=6.3744)
+2026-03-11 20:47:53,848 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8947, std=3.9016)
+2026-03-11 20:47:53,849 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0403, std=3.27)
+2026-03-11 20:47:54,002 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:47:54,005 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:47:54,006 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:47:54,038 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204752.csv
+2026-03-11 20:47:54,066 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:47:54,106 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:47:54,131 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204752_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 2800, 'humidity': 2800, 'pressure': 2800, 'wind_speed': 2800}
+2026-03-11 20:47:54,131 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204752.csv
+2026-03-11 20:48:54,142 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:48:54,143 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204852.csv
+2026-03-11 20:48:54,144 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204852.csv
+2026-03-11 20:48:54,220 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:48:54,374 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:48:54,374 [INFO] Baseline updated — channel: temperature, count: 2900, mean: 22.0596, std: 1.8102
+2026-03-11 20:48:54,375 [INFO] Baseline updated — channel: humidity, count: 2900, mean: 54.9493, std: 6.3712
+2026-03-11 20:48:54,375 [INFO] Baseline updated — channel: pressure, count: 2900, mean: 1012.88, std: 3.9109
+2026-03-11 20:48:54,376 [INFO] Baseline updated — channel: wind_speed, count: 2900, mean: 10.0281, std: 3.2462
+2026-03-11 20:48:54,376 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:48:54,377 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0596, std=1.8102)
+2026-03-11 20:48:54,378 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9493, std=6.3712)
+2026-03-11 20:48:54,379 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.88, std=3.9109)
+2026-03-11 20:48:54,380 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0281, std=3.2462)
+2026-03-11 20:48:54,534 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:48:54,537 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:48:54,538 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:48:54,569 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204852.csv
+2026-03-11 20:48:54,595 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:48:54,684 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:48:54,712 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204852_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 2900, 'humidity': 2900, 'pressure': 2900, 'wind_speed': 2900}
+2026-03-11 20:48:54,712 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204852.csv
+2026-03-11 20:49:53,699 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:49:53,699 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T204952.csv
+2026-03-11 20:49:53,701 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204952.csv
+2026-03-11 20:49:53,780 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:49:53,855 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:49:53,856 [INFO] Baseline updated — channel: temperature, count: 3000, mean: 22.0379, std: 1.8324
+2026-03-11 20:49:53,856 [INFO] Baseline updated — channel: humidity, count: 3000, mean: 54.9627, std: 6.3466
+2026-03-11 20:49:53,857 [INFO] Baseline updated — channel: pressure, count: 3000, mean: 1012.8873, std: 3.884
+2026-03-11 20:49:53,857 [INFO] Baseline updated — channel: wind_speed, count: 3000, mean: 10.0408, std: 3.2524
+2026-03-11 20:49:53,858 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:49:53,859 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0379, std=1.8324)
+2026-03-11 20:49:53,860 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9627, std=6.3466)
+2026-03-11 20:49:53,861 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8873, std=3.884)
+2026-03-11 20:49:53,862 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0408, std=3.2524)
+2026-03-11 20:49:54,015 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:49:54,019 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:49:54,019 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:49:54,053 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204952.csv
+2026-03-11 20:49:54,082 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:49:54,119 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:49:54,166 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T204952_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 3000, 'humidity': 3000, 'pressure': 3000, 'wind_speed': 3000}
+2026-03-11 20:49:54,166 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T204952.csv
+2026-03-11 20:50:54,189 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:50:54,189 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205052.csv
+2026-03-11 20:50:54,190 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205052.csv
+2026-03-11 20:50:54,262 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:50:54,341 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:50:54,342 [INFO] Baseline updated — channel: temperature, count: 3100, mean: 22.0328, std: 1.8275
+2026-03-11 20:50:54,343 [INFO] Baseline updated — channel: humidity, count: 3100, mean: 54.9685, std: 6.4016
+2026-03-11 20:50:54,343 [INFO] Baseline updated — channel: pressure, count: 3100, mean: 1012.8897, std: 3.8552
+2026-03-11 20:50:54,343 [INFO] Baseline updated — channel: wind_speed, count: 3100, mean: 10.0295, std: 3.2595
+2026-03-11 20:50:54,344 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:50:54,345 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0328, std=1.8275)
+2026-03-11 20:50:54,346 [INFO] Z-score — channel: humidity, flagged: 3/100 rows (mean=54.9685, std=6.4016)
+2026-03-11 20:50:54,347 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8897, std=3.8552)
+2026-03-11 20:50:54,348 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0295, std=3.2595)
+2026-03-11 20:50:54,502 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:50:54,505 [INFO] Consensus flag: 7/100 rows marked anomaly=True
+2026-03-11 20:50:54,505 [INFO] process_file: Detection complete — 7/100 anomalies flagged
+2026-03-11 20:50:54,539 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205052.csv
+2026-03-11 20:50:54,577 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:50:54,611 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:50:54,642 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205052_summary.json — anomaly_rate=0.07, baseline_counts={'temperature': 3100, 'humidity': 3100, 'pressure': 3100, 'wind_speed': 3100}
+2026-03-11 20:50:54,642 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205052.csv
+2026-03-11 20:51:54,790 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:51:54,790 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205153.csv
+2026-03-11 20:51:54,792 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205153.csv
+2026-03-11 20:51:54,871 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:51:54,946 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:51:54,946 [INFO] Baseline updated — channel: temperature, count: 3200, mean: 22.0281, std: 1.8273
+2026-03-11 20:51:54,947 [INFO] Baseline updated — channel: humidity, count: 3200, mean: 54.9451, std: 6.3668
+2026-03-11 20:51:54,947 [INFO] Baseline updated — channel: pressure, count: 3200, mean: 1012.8806, std: 3.8526
+2026-03-11 20:51:54,947 [INFO] Baseline updated — channel: wind_speed, count: 3200, mean: 10.0449, std: 3.2641
+2026-03-11 20:51:54,948 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:51:54,949 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0281, std=1.8273)
+2026-03-11 20:51:54,950 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9451, std=6.3668)
+2026-03-11 20:51:54,951 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8806, std=3.8526)
+2026-03-11 20:51:54,952 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0449, std=3.2641)
+2026-03-11 20:51:55,107 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:51:55,110 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:51:55,110 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:51:55,167 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205153.csv
+2026-03-11 20:51:55,198 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:51:55,266 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:51:55,297 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205153_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 3200, 'humidity': 3200, 'pressure': 3200, 'wind_speed': 3200}
+2026-03-11 20:51:55,297 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205153.csv
+2026-03-11 20:52:54,578 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:52:54,578 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205253.csv
+2026-03-11 20:52:54,579 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205253.csv
+2026-03-11 20:52:54,656 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:52:54,728 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:52:54,729 [INFO] Baseline updated — channel: temperature, count: 3300, mean: 22.0302, std: 1.8445
+2026-03-11 20:52:54,729 [INFO] Baseline updated — channel: humidity, count: 3300, mean: 54.9392, std: 6.3264
+2026-03-11 20:52:54,730 [INFO] Baseline updated — channel: pressure, count: 3300, mean: 1012.8793, std: 3.8533
+2026-03-11 20:52:54,730 [INFO] Baseline updated — channel: wind_speed, count: 3300, mean: 10.0328, std: 3.2612
+2026-03-11 20:52:54,731 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:52:54,732 [INFO] Z-score — channel: temperature, flagged: 3/100 rows (mean=22.0302, std=1.8445)
+2026-03-11 20:52:54,733 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9392, std=6.3264)
+2026-03-11 20:52:54,734 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8793, std=3.8533)
+2026-03-11 20:52:54,735 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0328, std=3.2612)
+2026-03-11 20:52:54,889 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:52:54,892 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:52:54,892 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:52:54,924 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205253.csv
+2026-03-11 20:52:54,957 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:52:55,028 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:52:55,056 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205253_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 3300, 'humidity': 3300, 'pressure': 3300, 'wind_speed': 3300}
+2026-03-11 20:52:55,056 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205253.csv
+2026-03-11 20:53:55,148 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:53:55,149 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205353.csv
+2026-03-11 20:53:55,150 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205353.csv
+2026-03-11 20:53:55,223 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:53:55,320 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:53:55,321 [INFO] Baseline updated — channel: temperature, count: 3400, mean: 22.0331, std: 1.838
+2026-03-11 20:53:55,322 [INFO] Baseline updated — channel: humidity, count: 3400, mean: 54.9353, std: 6.2798
+2026-03-11 20:53:55,322 [INFO] Baseline updated — channel: pressure, count: 3400, mean: 1012.8584, std: 4.0274
+2026-03-11 20:53:55,322 [INFO] Baseline updated — channel: wind_speed, count: 3400, mean: 10.0337, std: 3.2406
+2026-03-11 20:53:55,323 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:53:55,324 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0331, std=1.838)
+2026-03-11 20:53:55,325 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9353, std=6.2798)
+2026-03-11 20:53:55,326 [INFO] Z-score — channel: pressure, flagged: 4/100 rows (mean=1012.8584, std=4.0274)
+2026-03-11 20:53:55,327 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0337, std=3.2406)
+2026-03-11 20:53:55,482 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:53:55,485 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:53:55,485 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:53:55,520 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205353.csv
+2026-03-11 20:53:55,549 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:53:55,587 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:53:55,627 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205353_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 3400, 'humidity': 3400, 'pressure': 3400, 'wind_speed': 3400}
+2026-03-11 20:53:55,627 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205353.csv
+2026-03-11 20:54:55,472 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:54:55,472 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205453.csv
+2026-03-11 20:54:55,473 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205453.csv
+2026-03-11 20:54:55,548 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:54:55,659 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:54:55,660 [INFO] Baseline updated — channel: temperature, count: 3500, mean: 22.0348, std: 1.84
+2026-03-11 20:54:55,660 [INFO] Baseline updated — channel: humidity, count: 3500, mean: 54.9208, std: 6.253
+2026-03-11 20:54:55,660 [INFO] Baseline updated — channel: pressure, count: 3500, mean: 1012.8467, std: 4.0332
+2026-03-11 20:54:55,661 [INFO] Baseline updated — channel: wind_speed, count: 3500, mean: 10.026, std: 3.2302
+2026-03-11 20:54:55,661 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:54:55,662 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0348, std=1.84)
+2026-03-11 20:54:55,663 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9208, std=6.253)
+2026-03-11 20:54:55,664 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8467, std=4.0332)
+2026-03-11 20:54:55,665 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.026, std=3.2302)
+2026-03-11 20:54:55,823 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:54:55,826 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:54:55,826 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:54:55,856 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205453.csv
+2026-03-11 20:54:55,888 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:54:55,984 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:54:56,015 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205453_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 3500, 'humidity': 3500, 'pressure': 3500, 'wind_speed': 3500}
+2026-03-11 20:54:56,016 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205453.csv
+2026-03-11 20:55:55,311 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:55:55,311 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205553.csv
+2026-03-11 20:55:55,312 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205553.csv
+2026-03-11 20:55:55,383 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:55:55,459 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:55:55,459 [INFO] Baseline updated — channel: temperature, count: 3600, mean: 22.0316, std: 1.835
+2026-03-11 20:55:55,460 [INFO] Baseline updated — channel: humidity, count: 3600, mean: 54.9011, std: 6.2206
+2026-03-11 20:55:55,460 [INFO] Baseline updated — channel: pressure, count: 3600, mean: 1012.8397, std: 4.0561
+2026-03-11 20:55:55,461 [INFO] Baseline updated — channel: wind_speed, count: 3600, mean: 10.021, std: 3.2309
+2026-03-11 20:55:55,461 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:55:55,462 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0316, std=1.835)
+2026-03-11 20:55:55,463 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9011, std=6.2206)
+2026-03-11 20:55:55,464 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8397, std=4.0561)
+2026-03-11 20:55:55,465 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.021, std=3.2309)
+2026-03-11 20:55:55,623 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:55:55,626 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 20:55:55,626 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 20:55:55,658 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205553.csv
+2026-03-11 20:55:55,688 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:55:55,724 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:55:55,749 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205553_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 3600, 'humidity': 3600, 'pressure': 3600, 'wind_speed': 3600}
+2026-03-11 20:55:55,749 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205553.csv
+2026-03-11 20:56:55,817 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:56:55,817 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205654.csv
+2026-03-11 20:56:55,818 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205654.csv
+2026-03-11 20:56:55,893 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:56:56,005 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:56:56,005 [INFO] Baseline updated — channel: temperature, count: 3700, mean: 22.0395, std: 1.844
+2026-03-11 20:56:56,006 [INFO] Baseline updated — channel: humidity, count: 3700, mean: 54.9437, std: 6.2868
+2026-03-11 20:56:56,006 [INFO] Baseline updated — channel: pressure, count: 3700, mean: 1012.8509, std: 4.0386
+2026-03-11 20:56:56,007 [INFO] Baseline updated — channel: wind_speed, count: 3700, mean: 10.0142, std: 3.2115
+2026-03-11 20:56:56,007 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:56:56,008 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0395, std=1.844)
+2026-03-11 20:56:56,009 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9437, std=6.2868)
+2026-03-11 20:56:56,010 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8509, std=4.0386)
+2026-03-11 20:56:56,012 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0142, std=3.2115)
+2026-03-11 20:56:56,166 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:56:56,169 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:56:56,169 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:56:56,214 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205654.csv
+2026-03-11 20:56:56,250 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:56:56,306 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:56:56,357 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205654_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 3700, 'humidity': 3700, 'pressure': 3700, 'wind_speed': 3700}
+2026-03-11 20:56:56,357 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205654.csv
+2026-03-11 20:57:55,636 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:57:55,636 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205754.csv
+2026-03-11 20:57:55,637 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205754.csv
+2026-03-11 20:57:55,714 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:57:55,847 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:57:55,847 [INFO] Baseline updated — channel: temperature, count: 3800, mean: 22.0384, std: 1.8766
+2026-03-11 20:57:55,848 [INFO] Baseline updated — channel: humidity, count: 3800, mean: 54.9636, std: 6.2545
+2026-03-11 20:57:55,848 [INFO] Baseline updated — channel: pressure, count: 3800, mean: 1012.8513, std: 4.0188
+2026-03-11 20:57:55,848 [INFO] Baseline updated — channel: wind_speed, count: 3800, mean: 10.0165, std: 3.1977
+2026-03-11 20:57:55,849 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:57:55,850 [INFO] Z-score — channel: temperature, flagged: 4/100 rows (mean=22.0384, std=1.8766)
+2026-03-11 20:57:55,851 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9636, std=6.2545)
+2026-03-11 20:57:55,852 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8513, std=4.0188)
+2026-03-11 20:57:55,853 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0165, std=3.1977)
+2026-03-11 20:57:56,007 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:57:56,010 [INFO] Consensus flag: 7/100 rows marked anomaly=True
+2026-03-11 20:57:56,010 [INFO] process_file: Detection complete — 7/100 anomalies flagged
+2026-03-11 20:57:56,043 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205754.csv
+2026-03-11 20:57:56,075 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:57:56,147 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:57:56,175 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205754_summary.json — anomaly_rate=0.07, baseline_counts={'temperature': 3800, 'humidity': 3800, 'pressure': 3800, 'wind_speed': 3800}
+2026-03-11 20:57:56,175 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205754.csv
+2026-03-11 20:58:56,353 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:58:56,353 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205854.csv
+2026-03-11 20:58:56,354 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205854.csv
+2026-03-11 20:58:56,430 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:58:56,583 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:58:56,584 [INFO] Baseline updated — channel: temperature, count: 3900, mean: 22.0322, std: 1.8793
+2026-03-11 20:58:56,584 [INFO] Baseline updated — channel: humidity, count: 3900, mean: 54.9616, std: 6.3621
+2026-03-11 20:58:56,585 [INFO] Baseline updated — channel: pressure, count: 3900, mean: 1012.8516, std: 3.9936
+2026-03-11 20:58:56,585 [INFO] Baseline updated — channel: wind_speed, count: 3900, mean: 10.0103, std: 3.1775
+2026-03-11 20:58:56,586 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:58:56,587 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0322, std=1.8793)
+2026-03-11 20:58:56,588 [INFO] Z-score — channel: humidity, flagged: 3/100 rows (mean=54.9616, std=6.3621)
+2026-03-11 20:58:56,589 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8516, std=3.9936)
+2026-03-11 20:58:56,590 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0103, std=3.1775)
+2026-03-11 20:58:56,754 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:58:56,758 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:58:56,759 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:58:56,798 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205854.csv
+2026-03-11 20:58:56,825 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:58:56,925 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:58:56,959 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205854_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 3900, 'humidity': 3900, 'pressure': 3900, 'wind_speed': 3900}
+2026-03-11 20:58:56,960 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205854.csv
+2026-03-11 20:59:56,573 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 20:59:56,573 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T205954.csv
+2026-03-11 20:59:56,574 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205954.csv
+2026-03-11 20:59:56,646 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:59:56,745 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 20:59:56,746 [INFO] Baseline updated — channel: temperature, count: 4000, mean: 22.0303, std: 1.9112
+2026-03-11 20:59:56,747 [INFO] Baseline updated — channel: humidity, count: 4000, mean: 54.9615, std: 6.3424
+2026-03-11 20:59:56,747 [INFO] Baseline updated — channel: pressure, count: 4000, mean: 1012.8574, std: 3.979
+2026-03-11 20:59:56,748 [INFO] Baseline updated — channel: wind_speed, count: 4000, mean: 10.0089, std: 3.1579
+2026-03-11 20:59:56,748 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:59:56,749 [INFO] Z-score — channel: temperature, flagged: 3/100 rows (mean=22.0303, std=1.9112)
+2026-03-11 20:59:56,750 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9615, std=6.3424)
+2026-03-11 20:59:56,752 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8574, std=3.979)
+2026-03-11 20:59:56,753 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0089, std=3.1579)
+2026-03-11 20:59:56,913 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 20:59:56,916 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 20:59:56,916 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 20:59:56,994 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205954.csv
+2026-03-11 20:59:57,031 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 20:59:57,095 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 20:59:57,127 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T205954_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 4000, 'humidity': 4000, 'pressure': 4000, 'wind_speed': 4000}
+2026-03-11 20:59:57,128 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T205954.csv
+2026-03-11 21:00:56,387 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:00:56,387 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210055.csv
+2026-03-11 21:00:56,389 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210055.csv
+2026-03-11 21:00:56,460 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:00:56,555 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:00:56,556 [INFO] Baseline updated — channel: temperature, count: 4100, mean: 22.0254, std: 1.9018
+2026-03-11 21:00:56,556 [INFO] Baseline updated — channel: humidity, count: 4100, mean: 54.9691, std: 6.3351
+2026-03-11 21:00:56,557 [INFO] Baseline updated — channel: pressure, count: 4100, mean: 1012.8519, std: 3.9742
+2026-03-11 21:00:56,557 [INFO] Baseline updated — channel: wind_speed, count: 4100, mean: 10.0106, std: 3.1789
+2026-03-11 21:00:56,557 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:00:56,558 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0254, std=1.9018)
+2026-03-11 21:00:56,560 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9691, std=6.3351)
+2026-03-11 21:00:56,561 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8519, std=3.9742)
+2026-03-11 21:00:56,562 [INFO] Z-score — channel: wind_speed, flagged: 3/100 rows (mean=10.0106, std=3.1789)
+2026-03-11 21:00:56,718 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:00:56,721 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:00:56,721 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:00:56,753 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210055.csv
+2026-03-11 21:00:56,786 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:00:56,853 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:00:56,884 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210055_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 4100, 'humidity': 4100, 'pressure': 4100, 'wind_speed': 4100}
+2026-03-11 21:00:56,884 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210055.csv
+2026-03-11 21:01:56,882 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:01:56,882 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210155.csv
+2026-03-11 21:01:56,884 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210155.csv
+2026-03-11 21:01:56,960 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:01:57,029 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:01:57,030 [INFO] Baseline updated — channel: temperature, count: 4200, mean: 22.0298, std: 1.9
+2026-03-11 21:01:57,030 [INFO] Baseline updated — channel: humidity, count: 4200, mean: 54.9703, std: 6.3127
+2026-03-11 21:01:57,031 [INFO] Baseline updated — channel: pressure, count: 4200, mean: 1012.8584, std: 3.9705
+2026-03-11 21:01:57,031 [INFO] Baseline updated — channel: wind_speed, count: 4200, mean: 10.0032, std: 3.1788
+2026-03-11 21:01:57,031 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:01:57,032 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0298, std=1.9)
+2026-03-11 21:01:57,034 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9703, std=6.3127)
+2026-03-11 21:01:57,035 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8584, std=3.9705)
+2026-03-11 21:01:57,036 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0032, std=3.1788)
+2026-03-11 21:01:57,190 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:01:57,193 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:01:57,193 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:01:57,221 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210155.csv
+2026-03-11 21:01:57,245 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:01:57,366 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:01:57,396 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210155_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 4200, 'humidity': 4200, 'pressure': 4200, 'wind_speed': 4200}
+2026-03-11 21:01:57,396 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210155.csv
+2026-03-11 21:02:57,175 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:02:57,175 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210255.csv
+2026-03-11 21:02:57,177 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210255.csv
+2026-03-11 21:02:57,254 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:02:57,327 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:02:57,328 [INFO] Baseline updated — channel: temperature, count: 4300, mean: 22.0312, std: 1.8959
+2026-03-11 21:02:57,328 [INFO] Baseline updated — channel: humidity, count: 4300, mean: 54.9525, std: 6.3156
+2026-03-11 21:02:57,329 [INFO] Baseline updated — channel: pressure, count: 4300, mean: 1012.8644, std: 3.9477
+2026-03-11 21:02:57,329 [INFO] Baseline updated — channel: wind_speed, count: 4300, mean: 10.0158, std: 3.1815
+2026-03-11 21:02:57,330 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:02:57,331 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0312, std=1.8959)
+2026-03-11 21:02:57,332 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9525, std=6.3156)
+2026-03-11 21:02:57,333 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8644, std=3.9477)
+2026-03-11 21:02:57,334 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0158, std=3.1815)
+2026-03-11 21:02:57,489 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:02:57,494 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:02:57,494 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:02:57,537 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210255.csv
+2026-03-11 21:02:57,566 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:02:57,603 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:02:57,631 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210255_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 4300, 'humidity': 4300, 'pressure': 4300, 'wind_speed': 4300}
+2026-03-11 21:02:57,631 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210255.csv
+2026-03-11 21:03:56,973 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:03:56,973 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210355.csv
+2026-03-11 21:03:56,974 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210355.csv
+2026-03-11 21:03:57,053 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:03:57,149 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:03:57,150 [INFO] Baseline updated — channel: temperature, count: 4400, mean: 22.0245, std: 1.8914
+2026-03-11 21:03:57,151 [INFO] Baseline updated — channel: humidity, count: 4400, mean: 54.9652, std: 6.3092
+2026-03-11 21:03:57,151 [INFO] Baseline updated — channel: pressure, count: 4400, mean: 1012.8735, std: 3.9291
+2026-03-11 21:03:57,151 [INFO] Baseline updated — channel: wind_speed, count: 4400, mean: 10.0283, std: 3.2342
+2026-03-11 21:03:57,152 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:03:57,153 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0245, std=1.8914)
+2026-03-11 21:03:57,154 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9652, std=6.3092)
+2026-03-11 21:03:57,155 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8735, std=3.9291)
+2026-03-11 21:03:57,157 [INFO] Z-score — channel: wind_speed, flagged: 4/100 rows (mean=10.0283, std=3.2342)
+2026-03-11 21:03:57,319 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:03:57,322 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:03:57,322 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:03:57,355 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210355.csv
+2026-03-11 21:03:57,386 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:03:57,463 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:03:57,495 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210355_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 4400, 'humidity': 4400, 'pressure': 4400, 'wind_speed': 4400}
+2026-03-11 21:03:57,495 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210355.csv
+2026-03-11 21:04:57,615 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:04:57,615 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210455.csv
+2026-03-11 21:04:57,618 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210455.csv
+2026-03-11 21:04:57,693 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:04:57,766 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:04:57,766 [INFO] Baseline updated — channel: temperature, count: 4500, mean: 22.0108, std: 1.9032
+2026-03-11 21:04:57,767 [INFO] Baseline updated — channel: humidity, count: 4500, mean: 54.9575, std: 6.2966
+2026-03-11 21:04:57,768 [INFO] Baseline updated — channel: pressure, count: 4500, mean: 1012.8821, std: 3.91
+2026-03-11 21:04:57,768 [INFO] Baseline updated — channel: wind_speed, count: 4500, mean: 10.0301, std: 3.2394
+2026-03-11 21:04:57,769 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:04:57,770 [INFO] Z-score — channel: temperature, flagged: 3/100 rows (mean=22.0108, std=1.9032)
+2026-03-11 21:04:57,771 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9575, std=6.2966)
+2026-03-11 21:04:57,772 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8821, std=3.91)
+2026-03-11 21:04:57,773 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0301, std=3.2394)
+2026-03-11 21:04:57,930 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:04:57,933 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:04:57,934 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:04:57,962 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210455.csv
+2026-03-11 21:04:57,990 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:04:58,027 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:04:58,061 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210455_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 4500, 'humidity': 4500, 'pressure': 4500, 'wind_speed': 4500}
+2026-03-11 21:04:58,061 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210455.csv
+2026-03-11 21:05:58,055 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:05:58,055 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210556.csv
+2026-03-11 21:05:58,056 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210556.csv
+2026-03-11 21:05:58,133 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:05:58,242 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:05:58,243 [INFO] Baseline updated — channel: temperature, count: 4600, mean: 22.0127, std: 1.8954
+2026-03-11 21:05:58,243 [INFO] Baseline updated — channel: humidity, count: 4600, mean: 54.9489, std: 6.2682
+2026-03-11 21:05:58,244 [INFO] Baseline updated — channel: pressure, count: 4600, mean: 1012.8857, std: 3.9055
+2026-03-11 21:05:58,244 [INFO] Baseline updated — channel: wind_speed, count: 4600, mean: 10.0289, std: 3.2948
+2026-03-11 21:05:58,244 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:05:58,246 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0127, std=1.8954)
+2026-03-11 21:05:58,247 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9489, std=6.2682)
+2026-03-11 21:05:58,248 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8857, std=3.9055)
+2026-03-11 21:05:58,249 [INFO] Z-score — channel: wind_speed, flagged: 4/100 rows (mean=10.0289, std=3.2948)
+2026-03-11 21:05:58,402 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:05:58,405 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:05:58,406 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:05:58,438 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210556.csv
+2026-03-11 21:05:58,468 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:05:58,500 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:05:58,531 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210556_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 4600, 'humidity': 4600, 'pressure': 4600, 'wind_speed': 4600}
+2026-03-11 21:05:58,531 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210556.csv
+2026-03-11 21:06:57,650 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:06:57,650 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210656.csv
+2026-03-11 21:06:57,651 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210656.csv
+2026-03-11 21:06:57,727 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:06:57,837 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:06:57,837 [INFO] Baseline updated — channel: temperature, count: 4700, mean: 22.0163, std: 1.9101
+2026-03-11 21:06:57,838 [INFO] Baseline updated — channel: humidity, count: 4700, mean: 54.969, std: 6.2884
+2026-03-11 21:06:57,839 [INFO] Baseline updated — channel: pressure, count: 4700, mean: 1012.8796, std: 3.8897
+2026-03-11 21:06:57,839 [INFO] Baseline updated — channel: wind_speed, count: 4700, mean: 10.0246, std: 3.2805
+2026-03-11 21:06:57,839 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:06:57,841 [INFO] Z-score — channel: temperature, flagged: 3/100 rows (mean=22.0163, std=1.9101)
+2026-03-11 21:06:57,842 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.969, std=6.2884)
+2026-03-11 21:06:57,843 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8796, std=3.8897)
+2026-03-11 21:06:57,844 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0246, std=3.2805)
+2026-03-11 21:06:57,998 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:06:58,001 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:06:58,002 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:06:58,029 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210656.csv
+2026-03-11 21:06:58,061 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:06:58,103 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:06:58,130 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210656_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 4700, 'humidity': 4700, 'pressure': 4700, 'wind_speed': 4700}
+2026-03-11 21:06:58,130 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210656.csv
+2026-03-11 21:07:58,078 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:07:58,078 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210756.csv
+2026-03-11 21:07:58,079 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210756.csv
+2026-03-11 21:07:58,161 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:07:58,236 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:07:58,236 [INFO] Baseline updated — channel: temperature, count: 4800, mean: 22.0114, std: 1.9099
+2026-03-11 21:07:58,237 [INFO] Baseline updated — channel: humidity, count: 4800, mean: 54.9656, std: 6.2931
+2026-03-11 21:07:58,237 [INFO] Baseline updated — channel: pressure, count: 4800, mean: 1012.8894, std: 3.8903
+2026-03-11 21:07:58,238 [INFO] Baseline updated — channel: wind_speed, count: 4800, mean: 10.0212, std: 3.2697
+2026-03-11 21:07:58,238 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:07:58,239 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0114, std=1.9099)
+2026-03-11 21:07:58,240 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9656, std=6.2931)
+2026-03-11 21:07:58,241 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8894, std=3.8903)
+2026-03-11 21:07:58,242 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0212, std=3.2697)
+2026-03-11 21:07:58,400 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:07:58,403 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:07:58,403 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:07:58,446 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210756.csv
+2026-03-11 21:07:58,472 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:07:58,549 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:07:58,588 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210756_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 4800, 'humidity': 4800, 'pressure': 4800, 'wind_speed': 4800}
+2026-03-11 21:07:58,588 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210756.csv
+2026-03-11 21:08:57,881 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:08:57,881 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210856.csv
+2026-03-11 21:08:57,883 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210856.csv
+2026-03-11 21:08:57,958 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:08:58,030 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:08:58,031 [INFO] Baseline updated — channel: temperature, count: 4900, mean: 22.0111, std: 1.9093
+2026-03-11 21:08:58,031 [INFO] Baseline updated — channel: humidity, count: 4900, mean: 54.9453, std: 6.2995
+2026-03-11 21:08:58,032 [INFO] Baseline updated — channel: pressure, count: 4900, mean: 1012.8844, std: 3.8954
+2026-03-11 21:08:58,032 [INFO] Baseline updated — channel: wind_speed, count: 4900, mean: 10.0283, std: 3.261
+2026-03-11 21:08:58,032 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:08:58,033 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0111, std=1.9093)
+2026-03-11 21:08:58,035 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9453, std=6.2995)
+2026-03-11 21:08:58,036 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8844, std=3.8954)
+2026-03-11 21:08:58,037 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0283, std=3.261)
+2026-03-11 21:08:58,192 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:08:58,195 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:08:58,196 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:08:58,231 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210856.csv
+2026-03-11 21:08:58,265 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:08:58,331 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:08:58,363 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210856_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 4900, 'humidity': 4900, 'pressure': 4900, 'wind_speed': 4900}
+2026-03-11 21:08:58,363 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210856.csv
+2026-03-11 21:09:58,386 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:09:58,387 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T210956.csv
+2026-03-11 21:09:58,388 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210956.csv
+2026-03-11 21:09:58,469 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:09:58,572 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:09:58,573 [INFO] Baseline updated — channel: temperature, count: 5000, mean: 22.0146, std: 1.9022
+2026-03-11 21:09:58,573 [INFO] Baseline updated — channel: humidity, count: 5000, mean: 54.9576, std: 6.3047
+2026-03-11 21:09:58,574 [INFO] Baseline updated — channel: pressure, count: 5000, mean: 1012.8918, std: 3.883
+2026-03-11 21:09:58,574 [INFO] Baseline updated — channel: wind_speed, count: 5000, mean: 10.0209, std: 3.2681
+2026-03-11 21:09:58,575 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:09:58,576 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0146, std=1.9022)
+2026-03-11 21:09:58,577 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9576, std=6.3047)
+2026-03-11 21:09:58,578 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8918, std=3.883)
+2026-03-11 21:09:58,579 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0209, std=3.2681)
+2026-03-11 21:09:58,733 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:09:58,737 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:09:58,737 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:09:58,768 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210956.csv
+2026-03-11 21:09:58,826 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:09:58,900 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:09:58,933 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T210956_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 5000, 'humidity': 5000, 'pressure': 5000, 'wind_speed': 5000}
+2026-03-11 21:09:58,933 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T210956.csv
+2026-03-11 21:10:58,878 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:10:58,878 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211057.csv
+2026-03-11 21:10:58,880 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211057.csv
+2026-03-11 21:10:58,954 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:10:59,029 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:10:59,030 [INFO] Baseline updated — channel: temperature, count: 5100, mean: 22.0106, std: 1.907
+2026-03-11 21:10:59,030 [INFO] Baseline updated — channel: humidity, count: 5100, mean: 54.9615, std: 6.2811
+2026-03-11 21:10:59,031 [INFO] Baseline updated — channel: pressure, count: 5100, mean: 1012.8921, std: 3.869
+2026-03-11 21:10:59,031 [INFO] Baseline updated — channel: wind_speed, count: 5100, mean: 10.0178, std: 3.264
+2026-03-11 21:10:59,032 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:10:59,033 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0106, std=1.907)
+2026-03-11 21:10:59,034 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9615, std=6.2811)
+2026-03-11 21:10:59,035 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8921, std=3.869)
+2026-03-11 21:10:59,036 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0178, std=3.264)
+2026-03-11 21:10:59,191 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:10:59,194 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:10:59,195 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:10:59,228 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211057.csv
+2026-03-11 21:10:59,266 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:10:59,296 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:10:59,323 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211057_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 5100, 'humidity': 5100, 'pressure': 5100, 'wind_speed': 5100}
+2026-03-11 21:10:59,323 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211057.csv
+2026-03-11 21:11:58,540 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:11:58,540 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211157.csv
+2026-03-11 21:11:58,541 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211157.csv
+2026-03-11 21:11:58,616 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:11:58,687 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:11:58,688 [INFO] Baseline updated — channel: temperature, count: 5200, mean: 22.0154, std: 1.9062
+2026-03-11 21:11:58,688 [INFO] Baseline updated — channel: humidity, count: 5200, mean: 54.94, std: 6.2896
+2026-03-11 21:11:58,689 [INFO] Baseline updated — channel: pressure, count: 5200, mean: 1012.8886, std: 3.8763
+2026-03-11 21:11:58,689 [INFO] Baseline updated — channel: wind_speed, count: 5200, mean: 10.0157, std: 3.253
+2026-03-11 21:11:58,689 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:11:58,691 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0154, std=1.9062)
+2026-03-11 21:11:58,692 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.94, std=6.2896)
+2026-03-11 21:11:58,693 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8886, std=3.8763)
+2026-03-11 21:11:58,694 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0157, std=3.253)
+2026-03-11 21:11:58,848 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:11:58,851 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:11:58,851 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:11:58,883 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211157.csv
+2026-03-11 21:11:58,910 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:11:59,001 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:11:59,032 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211157_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 5200, 'humidity': 5200, 'pressure': 5200, 'wind_speed': 5200}
+2026-03-11 21:11:59,033 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211157.csv
+2026-03-11 21:12:59,064 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:12:59,064 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211257.csv
+2026-03-11 21:12:59,067 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211257.csv
+2026-03-11 21:12:59,140 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:12:59,217 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:12:59,217 [INFO] Baseline updated — channel: temperature, count: 5300, mean: 22.0139, std: 1.905
+2026-03-11 21:12:59,218 [INFO] Baseline updated — channel: humidity, count: 5300, mean: 54.9253, std: 6.2624
+2026-03-11 21:12:59,218 [INFO] Baseline updated — channel: pressure, count: 5300, mean: 1012.8846, std: 3.8979
+2026-03-11 21:12:59,219 [INFO] Baseline updated — channel: wind_speed, count: 5300, mean: 10.0226, std: 3.2569
+2026-03-11 21:12:59,219 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:12:59,220 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0139, std=1.905)
+2026-03-11 21:12:59,221 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9253, std=6.2624)
+2026-03-11 21:12:59,222 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8846, std=3.8979)
+2026-03-11 21:12:59,223 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0226, std=3.2569)
+2026-03-11 21:12:59,378 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:12:59,381 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:12:59,382 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:12:59,454 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211257.csv
+2026-03-11 21:12:59,485 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:12:59,563 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:12:59,592 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211257_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 5300, 'humidity': 5300, 'pressure': 5300, 'wind_speed': 5300}
+2026-03-11 21:12:59,593 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211257.csv
+2026-03-11 21:13:59,475 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:13:59,475 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211357.csv
+2026-03-11 21:13:59,477 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211357.csv
+2026-03-11 21:13:59,556 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:13:59,634 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:13:59,635 [INFO] Baseline updated — channel: temperature, count: 5400, mean: 22.0134, std: 1.9017
+2026-03-11 21:13:59,635 [INFO] Baseline updated — channel: humidity, count: 5400, mean: 54.933, std: 6.248
+2026-03-11 21:13:59,635 [INFO] Baseline updated — channel: pressure, count: 5400, mean: 1012.8819, std: 3.9127
+2026-03-11 21:13:59,636 [INFO] Baseline updated — channel: wind_speed, count: 5400, mean: 10.0174, std: 3.243
+2026-03-11 21:13:59,636 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:13:59,637 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0134, std=1.9017)
+2026-03-11 21:13:59,638 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.933, std=6.248)
+2026-03-11 21:13:59,639 [INFO] Z-score — channel: pressure, flagged: 3/100 rows (mean=1012.8819, std=3.9127)
+2026-03-11 21:13:59,641 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0174, std=3.243)
+2026-03-11 21:13:59,796 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:13:59,800 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:13:59,800 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:13:59,836 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211357.csv
+2026-03-11 21:13:59,868 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:13:59,930 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:13:59,962 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211357_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 5400, 'humidity': 5400, 'pressure': 5400, 'wind_speed': 5400}
+2026-03-11 21:13:59,962 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211357.csv
+2026-03-11 21:14:59,914 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:14:59,914 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211458.csv
+2026-03-11 21:14:59,916 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211458.csv
+2026-03-11 21:14:59,997 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:15:00,181 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:15:00,182 [INFO] Baseline updated — channel: temperature, count: 5500, mean: 22.0176, std: 1.9021
+2026-03-11 21:15:00,182 [INFO] Baseline updated — channel: humidity, count: 5500, mean: 54.9226, std: 6.2706
+2026-03-11 21:15:00,182 [INFO] Baseline updated — channel: pressure, count: 5500, mean: 1012.891, std: 3.9243
+2026-03-11 21:15:00,183 [INFO] Baseline updated — channel: wind_speed, count: 5500, mean: 10.0104, std: 3.2352
+2026-03-11 21:15:00,183 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:15:00,184 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0176, std=1.9021)
+2026-03-11 21:15:00,185 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9226, std=6.2706)
+2026-03-11 21:15:00,186 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.891, std=3.9243)
+2026-03-11 21:15:00,187 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0104, std=3.2352)
+2026-03-11 21:15:00,342 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:15:00,345 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:15:00,346 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:15:00,378 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211458.csv
+2026-03-11 21:15:00,413 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:15:00,465 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:15:00,497 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211458_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 5500, 'humidity': 5500, 'pressure': 5500, 'wind_speed': 5500}
+2026-03-11 21:15:00,498 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211458.csv
+2026-03-11 21:15:59,642 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:15:59,642 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211558.csv
+2026-03-11 21:15:59,643 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211558.csv
+2026-03-11 21:15:59,729 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:15:59,811 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:15:59,812 [INFO] Baseline updated — channel: temperature, count: 5600, mean: 22.0189, std: 1.8941
+2026-03-11 21:15:59,812 [INFO] Baseline updated — channel: humidity, count: 5600, mean: 54.915, std: 6.2643
+2026-03-11 21:15:59,812 [INFO] Baseline updated — channel: pressure, count: 5600, mean: 1012.8904, std: 3.9755
+2026-03-11 21:15:59,813 [INFO] Baseline updated — channel: wind_speed, count: 5600, mean: 10.0112, std: 3.2243
+2026-03-11 21:15:59,813 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:15:59,814 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0189, std=1.8941)
+2026-03-11 21:15:59,815 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.915, std=6.2643)
+2026-03-11 21:15:59,816 [INFO] Z-score — channel: pressure, flagged: 4/100 rows (mean=1012.8904, std=3.9755)
+2026-03-11 21:15:59,817 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0112, std=3.2243)
+2026-03-11 21:15:59,973 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:15:59,976 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:15:59,976 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:16:00,017 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211558.csv
+2026-03-11 21:16:00,073 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:16:00,134 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:16:00,173 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211558_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 5600, 'humidity': 5600, 'pressure': 5600, 'wind_speed': 5600}
+2026-03-11 21:16:00,173 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211558.csv
+2026-03-11 21:17:00,317 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:17:00,317 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211658.csv
+2026-03-11 21:17:00,318 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211658.csv
+2026-03-11 21:17:00,395 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:17:00,468 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:17:00,469 [INFO] Baseline updated — channel: temperature, count: 5700, mean: 22.0126, std: 1.8918
+2026-03-11 21:17:00,469 [INFO] Baseline updated — channel: humidity, count: 5700, mean: 54.9125, std: 6.2605
+2026-03-11 21:17:00,470 [INFO] Baseline updated — channel: pressure, count: 5700, mean: 1012.8861, std: 3.9677
+2026-03-11 21:17:00,470 [INFO] Baseline updated — channel: wind_speed, count: 5700, mean: 10.015, std: 3.2299
+2026-03-11 21:17:00,471 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:17:00,472 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0126, std=1.8918)
+2026-03-11 21:17:00,473 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9125, std=6.2605)
+2026-03-11 21:17:00,474 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8861, std=3.9677)
+2026-03-11 21:17:00,475 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.015, std=3.2299)
+2026-03-11 21:17:00,631 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:17:00,634 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:17:00,635 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:17:00,667 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211658.csv
+2026-03-11 21:17:00,698 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:17:00,739 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:17:00,774 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211658_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 5700, 'humidity': 5700, 'pressure': 5700, 'wind_speed': 5700}
+2026-03-11 21:17:00,774 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211658.csv
+2026-03-11 21:18:00,682 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:18:00,682 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211758.csv
+2026-03-11 21:18:00,683 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211758.csv
+2026-03-11 21:18:00,764 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:18:00,843 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:18:00,844 [INFO] Baseline updated — channel: temperature, count: 5800, mean: 22.011, std: 1.886
+2026-03-11 21:18:00,844 [INFO] Baseline updated — channel: humidity, count: 5800, mean: 54.9163, std: 6.2482
+2026-03-11 21:18:00,845 [INFO] Baseline updated — channel: pressure, count: 5800, mean: 1012.8738, std: 3.9863
+2026-03-11 21:18:00,845 [INFO] Baseline updated — channel: wind_speed, count: 5800, mean: 10.014, std: 3.2334
+2026-03-11 21:18:00,846 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:18:00,847 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.011, std=1.886)
+2026-03-11 21:18:00,848 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9163, std=6.2482)
+2026-03-11 21:18:00,849 [INFO] Z-score — channel: pressure, flagged: 3/100 rows (mean=1012.8738, std=3.9863)
+2026-03-11 21:18:00,850 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.014, std=3.2334)
+2026-03-11 21:18:01,007 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:18:01,010 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:18:01,010 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:18:01,046 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211758.csv
+2026-03-11 21:18:01,079 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:18:01,125 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:18:01,158 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211758_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 5800, 'humidity': 5800, 'pressure': 5800, 'wind_speed': 5800}
+2026-03-11 21:18:01,158 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211758.csv
+2026-03-11 21:19:00,421 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:19:00,421 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211859.csv
+2026-03-11 21:19:00,422 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211859.csv
+2026-03-11 21:19:00,505 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:19:00,601 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:19:00,602 [INFO] Baseline updated — channel: temperature, count: 5900, mean: 22.0075, std: 1.884
+2026-03-11 21:19:00,603 [INFO] Baseline updated — channel: humidity, count: 5900, mean: 54.9286, std: 6.2424
+2026-03-11 21:19:00,603 [INFO] Baseline updated — channel: pressure, count: 5900, mean: 1012.8751, std: 3.9927
+2026-03-11 21:19:00,603 [INFO] Baseline updated — channel: wind_speed, count: 5900, mean: 10.0226, std: 3.2292
+2026-03-11 21:19:00,604 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:19:00,605 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0075, std=1.884)
+2026-03-11 21:19:00,606 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9286, std=6.2424)
+2026-03-11 21:19:00,607 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8751, std=3.9927)
+2026-03-11 21:19:00,608 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0226, std=3.2292)
+2026-03-11 21:19:00,762 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:19:00,765 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:19:00,766 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:19:00,799 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211859.csv
+2026-03-11 21:19:00,834 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:19:00,871 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:19:00,905 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211859_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 5900, 'humidity': 5900, 'pressure': 5900, 'wind_speed': 5900}
+2026-03-11 21:19:00,905 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211859.csv
+2026-03-11 21:20:00,960 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:20:00,960 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T211959.csv
+2026-03-11 21:20:00,962 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211959.csv
+2026-03-11 21:20:01,062 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:20:01,189 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:20:01,191 [INFO] Baseline updated — channel: temperature, count: 6000, mean: 22.0078, std: 1.8854
+2026-03-11 21:20:01,192 [INFO] Baseline updated — channel: humidity, count: 6000, mean: 54.9395, std: 6.2271
+2026-03-11 21:20:01,194 [INFO] Baseline updated — channel: pressure, count: 6000, mean: 1012.8652, std: 3.9893
+2026-03-11 21:20:01,196 [INFO] Baseline updated — channel: wind_speed, count: 6000, mean: 10.0216, std: 3.2231
+2026-03-11 21:20:01,196 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:20:01,200 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0078, std=1.8854)
+2026-03-11 21:20:01,202 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9395, std=6.2271)
+2026-03-11 21:20:01,208 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8652, std=3.9893)
+2026-03-11 21:20:01,215 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0216, std=3.2231)
+2026-03-11 21:20:01,567 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:20:01,571 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:20:01,571 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:20:01,629 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211959.csv
+2026-03-11 21:20:01,657 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:20:01,724 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:20:01,793 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T211959_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 6000, 'humidity': 6000, 'pressure': 6000, 'wind_speed': 6000}
+2026-03-11 21:20:01,793 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T211959.csv
+2026-03-11 21:21:01,316 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:21:01,316 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212059.csv
+2026-03-11 21:21:01,320 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212059.csv
+2026-03-11 21:21:01,479 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:21:01,600 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:21:01,601 [INFO] Baseline updated — channel: temperature, count: 6100, mean: 22.0106, std: 1.8856
+2026-03-11 21:21:01,601 [INFO] Baseline updated — channel: humidity, count: 6100, mean: 54.9379, std: 6.2265
+2026-03-11 21:21:01,602 [INFO] Baseline updated — channel: pressure, count: 6100, mean: 1012.8628, std: 3.9846
+2026-03-11 21:21:01,604 [INFO] Baseline updated — channel: wind_speed, count: 6100, mean: 10.0178, std: 3.2249
+2026-03-11 21:21:01,604 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:21:01,607 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0106, std=1.8856)
+2026-03-11 21:21:01,609 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9379, std=6.2265)
+2026-03-11 21:21:01,612 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8628, std=3.9846)
+2026-03-11 21:21:01,617 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0178, std=3.2249)
+2026-03-11 21:21:01,920 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:21:01,939 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:21:01,939 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:21:02,020 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212059.csv
+2026-03-11 21:21:02,057 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:21:02,099 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:21:02,129 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212059_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 6100, 'humidity': 6100, 'pressure': 6100, 'wind_speed': 6100}
+2026-03-11 21:21:02,129 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212059.csv
+2026-03-11 21:22:01,021 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:22:01,022 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212159.csv
+2026-03-11 21:22:01,023 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212159.csv
+2026-03-11 21:22:01,094 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:22:01,169 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:22:01,170 [INFO] Baseline updated — channel: temperature, count: 6200, mean: 22.0169, std: 1.8898
+2026-03-11 21:22:01,171 [INFO] Baseline updated — channel: humidity, count: 6200, mean: 54.9381, std: 6.2378
+2026-03-11 21:22:01,171 [INFO] Baseline updated — channel: pressure, count: 6200, mean: 1012.8641, std: 3.9753
+2026-03-11 21:22:01,172 [INFO] Baseline updated — channel: wind_speed, count: 6200, mean: 10.0218, std: 3.2131
+2026-03-11 21:22:01,172 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:22:01,175 [INFO] Z-score — channel: temperature, flagged: 3/100 rows (mean=22.0169, std=1.8898)
+2026-03-11 21:22:01,176 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9381, std=6.2378)
+2026-03-11 21:22:01,178 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8641, std=3.9753)
+2026-03-11 21:22:01,179 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0218, std=3.2131)
+2026-03-11 21:22:01,341 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:22:01,346 [INFO] Consensus flag: 8/100 rows marked anomaly=True
+2026-03-11 21:22:01,346 [INFO] process_file: Detection complete — 8/100 anomalies flagged
+2026-03-11 21:22:01,456 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212159.csv
+2026-03-11 21:22:01,483 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:22:01,523 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:22:01,621 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212159_summary.json — anomaly_rate=0.08, baseline_counts={'temperature': 6200, 'humidity': 6200, 'pressure': 6200, 'wind_speed': 6200}
+2026-03-11 21:22:01,622 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212159.csv
+2026-03-11 21:23:01,686 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:23:01,686 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212300.csv
+2026-03-11 21:23:01,688 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212300.csv
+2026-03-11 21:23:01,784 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:23:01,884 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:23:01,885 [INFO] Baseline updated — channel: temperature, count: 6300, mean: 22.0178, std: 1.8874
+2026-03-11 21:23:01,885 [INFO] Baseline updated — channel: humidity, count: 6300, mean: 54.9509, std: 6.2301
+2026-03-11 21:23:01,886 [INFO] Baseline updated — channel: pressure, count: 6300, mean: 1012.8683, std: 3.9741
+2026-03-11 21:23:01,891 [INFO] Baseline updated — channel: wind_speed, count: 6300, mean: 10.0247, std: 3.2056
+2026-03-11 21:23:01,892 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:23:01,893 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0178, std=1.8874)
+2026-03-11 21:23:01,903 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9509, std=6.2301)
+2026-03-11 21:23:01,904 [INFO] Z-score — channel: pressure, flagged: 2/100 rows (mean=1012.8683, std=3.9741)
+2026-03-11 21:23:01,905 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.0247, std=3.2056)
+2026-03-11 21:23:02,154 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:23:02,157 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:23:02,157 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:23:02,249 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212300.csv
+2026-03-11 21:23:02,277 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:23:02,331 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:23:02,378 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212300_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 6300, 'humidity': 6300, 'pressure': 6300, 'wind_speed': 6300}
+2026-03-11 21:23:02,379 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212300.csv
+2026-03-11 21:24:02,076 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:24:02,076 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212400.csv
+2026-03-11 21:24:02,078 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212400.csv
+2026-03-11 21:24:02,235 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:24:02,368 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:24:02,368 [INFO] Baseline updated — channel: temperature, count: 6400, mean: 22.0108, std: 1.892
+2026-03-11 21:24:02,373 [INFO] Baseline updated — channel: humidity, count: 6400, mean: 54.9363, std: 6.2325
+2026-03-11 21:24:02,378 [INFO] Baseline updated — channel: pressure, count: 6400, mean: 1012.8729, std: 3.9629
+2026-03-11 21:24:02,382 [INFO] Baseline updated — channel: wind_speed, count: 6400, mean: 10.0239, std: 3.2082
+2026-03-11 21:24:02,383 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:24:02,386 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0108, std=1.892)
+2026-03-11 21:24:02,389 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9363, std=6.2325)
+2026-03-11 21:24:02,394 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8729, std=3.9629)
+2026-03-11 21:24:02,411 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0239, std=3.2082)
+2026-03-11 21:24:02,775 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:24:02,779 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:24:02,779 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:24:02,828 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212400.csv
+2026-03-11 21:24:02,862 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:24:02,922 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:24:02,971 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212400_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 6400, 'humidity': 6400, 'pressure': 6400, 'wind_speed': 6400}
+2026-03-11 21:24:02,971 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212400.csv
+2026-03-11 21:25:01,820 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:25:01,820 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212500.csv
+2026-03-11 21:25:01,823 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212500.csv
+2026-03-11 21:25:02,087 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:25:02,262 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:25:02,263 [INFO] Baseline updated — channel: temperature, count: 6500, mean: 22.0109, std: 1.8901
+2026-03-11 21:25:02,263 [INFO] Baseline updated — channel: humidity, count: 6500, mean: 54.9327, std: 6.245
+2026-03-11 21:25:02,264 [INFO] Baseline updated — channel: pressure, count: 6500, mean: 1012.8783, std: 3.9615
+2026-03-11 21:25:02,266 [INFO] Baseline updated — channel: wind_speed, count: 6500, mean: 10.029, std: 3.2079
+2026-03-11 21:25:02,268 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:25:02,273 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0109, std=1.8901)
+2026-03-11 21:25:02,278 [INFO] Z-score — channel: humidity, flagged: 2/100 rows (mean=54.9327, std=6.245)
+2026-03-11 21:25:02,287 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8783, std=3.9615)
+2026-03-11 21:25:02,289 [INFO] Z-score — channel: wind_speed, flagged: 1/100 rows (mean=10.029, std=3.2079)
+2026-03-11 21:25:02,597 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:25:02,600 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:25:02,600 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:25:02,636 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212500.csv
+2026-03-11 21:25:02,673 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:25:02,710 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:25:02,743 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212500_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 6500, 'humidity': 6500, 'pressure': 6500, 'wind_speed': 6500}
+2026-03-11 21:25:02,744 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212500.csv
+2026-03-11 21:26:02,245 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:26:02,245 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212600.csv
+2026-03-11 21:26:02,247 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212600.csv
+2026-03-11 21:26:02,364 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:26:02,524 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:26:02,525 [INFO] Baseline updated — channel: temperature, count: 6600, mean: 22.0114, std: 1.8931
+2026-03-11 21:26:02,526 [INFO] Baseline updated — channel: humidity, count: 6600, mean: 54.9224, std: 6.2246
+2026-03-11 21:26:02,526 [INFO] Baseline updated — channel: pressure, count: 6600, mean: 1012.8814, std: 3.9482
+2026-03-11 21:26:02,526 [INFO] Baseline updated — channel: wind_speed, count: 6600, mean: 10.0315, std: 3.2104
+2026-03-11 21:26:02,527 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:26:02,528 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0114, std=1.8931)
+2026-03-11 21:26:02,529 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9224, std=6.2246)
+2026-03-11 21:26:02,530 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8814, std=3.9482)
+2026-03-11 21:26:02,531 [INFO] Z-score — channel: wind_speed, flagged: 2/100 rows (mean=10.0315, std=3.2104)
+2026-03-11 21:26:02,685 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:26:02,688 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:26:02,688 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:26:02,728 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212600.csv
+2026-03-11 21:26:02,761 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:26:02,793 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:26:02,823 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212600_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 6600, 'humidity': 6600, 'pressure': 6600, 'wind_speed': 6600}
+2026-03-11 21:26:02,823 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212600.csv
+2026-03-11 21:27:01,886 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:27:01,886 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212700.csv
+2026-03-11 21:27:01,887 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212700.csv
+2026-03-11 21:27:02,016 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:27:02,336 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:27:02,351 [INFO] Baseline updated — channel: temperature, count: 6700, mean: 22.0106, std: 1.8863
+2026-03-11 21:27:02,353 [INFO] Baseline updated — channel: humidity, count: 6700, mean: 54.9128, std: 6.2163
+2026-03-11 21:27:02,357 [INFO] Baseline updated — channel: pressure, count: 6700, mean: 1012.8847, std: 3.9326
+2026-03-11 21:27:02,362 [INFO] Baseline updated — channel: wind_speed, count: 6700, mean: 10.0456, std: 3.2768
+2026-03-11 21:27:02,365 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:27:02,372 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0106, std=1.8863)
+2026-03-11 21:27:02,383 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9128, std=6.2163)
+2026-03-11 21:27:02,392 [INFO] Z-score — channel: pressure, flagged: 0/100 rows (mean=1012.8847, std=3.9326)
+2026-03-11 21:27:02,399 [INFO] Z-score — channel: wind_speed, flagged: 4/100 rows (mean=10.0456, std=3.2768)
+2026-03-11 21:27:02,708 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:27:02,713 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:27:02,713 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:27:02,747 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212700.csv
+2026-03-11 21:27:02,809 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:27:02,881 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:27:02,911 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212700_summary.json — anomaly_rate=0.06, baseline_counts={'temperature': 6700, 'humidity': 6700, 'pressure': 6700, 'wind_speed': 6700}
+2026-03-11 21:27:02,911 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212700.csv
+2026-03-11 21:28:02,574 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:28:02,574 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212801.csv
+2026-03-11 21:28:02,577 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212801.csv
+2026-03-11 21:28:02,721 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:28:02,825 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:28:02,827 [INFO] Baseline updated — channel: temperature, count: 6800, mean: 22.0137, std: 1.8928
+2026-03-11 21:28:02,829 [INFO] Baseline updated — channel: humidity, count: 6800, mean: 54.9087, std: 6.196
+2026-03-11 21:28:02,831 [INFO] Baseline updated — channel: pressure, count: 6800, mean: 1012.8885, std: 3.9444
+2026-03-11 21:28:02,832 [INFO] Baseline updated — channel: wind_speed, count: 6800, mean: 10.0486, std: 3.2711
+2026-03-11 21:28:02,833 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:28:02,835 [INFO] Z-score — channel: temperature, flagged: 2/100 rows (mean=22.0137, std=1.8928)
+2026-03-11 21:28:02,837 [INFO] Z-score — channel: humidity, flagged: 0/100 rows (mean=54.9087, std=6.196)
+2026-03-11 21:28:02,838 [INFO] Z-score — channel: pressure, flagged: 3/100 rows (mean=1012.8885, std=3.9444)
+2026-03-11 21:28:02,839 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0486, std=3.2711)
+2026-03-11 21:28:03,033 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:28:03,040 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:28:03,041 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:28:03,073 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212801.csv
+2026-03-11 21:28:03,108 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:28:03,177 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:28:03,205 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212801_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 6800, 'humidity': 6800, 'pressure': 6800, 'wind_speed': 6800}
+2026-03-11 21:28:03,205 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212801.csv
+2026-03-11 21:29:02,983 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:29:02,983 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T212901.csv
+2026-03-11 21:29:02,985 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212901.csv
+2026-03-11 21:29:03,064 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:29:03,152 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:29:03,153 [INFO] Baseline updated — channel: temperature, count: 6900, mean: 22.0153, std: 1.8928
+2026-03-11 21:29:03,153 [INFO] Baseline updated — channel: humidity, count: 6900, mean: 54.9151, std: 6.1876
+2026-03-11 21:29:03,154 [INFO] Baseline updated — channel: pressure, count: 6900, mean: 1012.8934, std: 3.9547
+2026-03-11 21:29:03,154 [INFO] Baseline updated — channel: wind_speed, count: 6900, mean: 10.0503, std: 3.2586
+2026-03-11 21:29:03,155 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:29:03,156 [INFO] Z-score — channel: temperature, flagged: 1/100 rows (mean=22.0153, std=1.8928)
+2026-03-11 21:29:03,157 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9151, std=6.1876)
+2026-03-11 21:29:03,158 [INFO] Z-score — channel: pressure, flagged: 3/100 rows (mean=1012.8934, std=3.9547)
+2026-03-11 21:29:03,159 [INFO] Z-score — channel: wind_speed, flagged: 0/100 rows (mean=10.0503, std=3.2586)
+2026-03-11 21:29:03,321 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:29:03,325 [INFO] Consensus flag: 5/100 rows marked anomaly=True
+2026-03-11 21:29:03,325 [INFO] process_file: Detection complete — 5/100 anomalies flagged
+2026-03-11 21:29:03,366 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212901.csv
+2026-03-11 21:29:03,393 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
+2026-03-11 21:29:03,437 [INFO] Log file synced to S3: logs/app.log
+2026-03-11 21:29:03,475 [INFO] process_file: Summary written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T212901_summary.json — anomaly_rate=0.05, baseline_counts={'temperature': 6900, 'humidity': 6900, 'pressure': 6900, 'wind_speed': 6900}
+2026-03-11 21:29:03,475 [INFO] process_file: Finished — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T212901.csv
+2026-03-11 21:30:02,777 [INFO] /notify: Received SNS message type: Notification
+2026-03-11 21:30:02,777 [INFO] /notify: New file arrived — queuing for processing: raw/sensors_20260311T213001.csv
+2026-03-11 21:30:02,779 [INFO] process_file: Started — s3://ds5220-dp1-bucket-rna4ts/raw/sensors_20260311T213001.csv
+2026-03-11 21:30:02,977 [INFO] process_file: Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:30:03,104 [INFO] Baseline loaded from S3: state/baseline.json
+2026-03-11 21:30:03,108 [INFO] Baseline updated — channel: temperature, count: 7000, mean: 22.0209, std: 1.8863
+2026-03-11 21:30:03,109 [INFO] Baseline updated — channel: humidity, count: 7000, mean: 54.9121, std: 6.1881
+2026-03-11 21:30:03,115 [INFO] Baseline updated — channel: pressure, count: 7000, mean: 1012.8907, std: 3.9552
+2026-03-11 21:30:03,119 [INFO] Baseline updated — channel: wind_speed, count: 7000, mean: 10.0448, std: 3.2633
+2026-03-11 21:30:03,121 [INFO] AnomalyDetector.run: Starting detection on 100 rows using method='both', columns=['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:30:03,123 [INFO] Z-score — channel: temperature, flagged: 0/100 rows (mean=22.0209, std=1.8863)
+2026-03-11 21:30:03,126 [INFO] Z-score — channel: humidity, flagged: 1/100 rows (mean=54.9121, std=6.1881)
+2026-03-11 21:30:03,130 [INFO] Z-score — channel: pressure, flagged: 1/100 rows (mean=1012.8907, std=3.9552)
+2026-03-11 21:30:03,134 [INFO] Z-score — channel: wind_speed, flagged: 3/100 rows (mean=10.0448, std=3.2633)
+2026-03-11 21:30:03,629 [INFO] IsolationForest: 5/100 rows flagged as anomalies across columns: ['temperature', 'humidity', 'pressure', 'wind_speed']
+2026-03-11 21:30:03,636 [INFO] Consensus flag: 6/100 rows marked anomaly=True
+2026-03-11 21:30:03,637 [INFO] process_file: Detection complete — 6/100 anomalies flagged
+2026-03-11 21:30:03,667 [INFO] process_file: Scored CSV written to s3://ds5220-dp1-bucket-rna4ts/processed/sensors_20260311T213001.csv
+2026-03-11 21:30:03,719 [INFO] Baseline saved to S3: state/baseline.json (channels: ['temperature', 'humidity', 'pressure', 'wind_speed'])
